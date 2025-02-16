@@ -3,9 +3,9 @@ extends Node2D
 var gametype = 'sign'
 var my_hidden = true
 
-@onready var label = get_node("CanvasLayer/NinePatchRect/Label")
+@onready var label = get_node("CanvasLayer/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/Label")
 @onready var Event = get_node("/root/Events")
-@export var text : String = "All your base are belong to us!"
+@export var text : String = "They mostly come at night ...\nmostly."
 
 func _ready():
 	$CanvasLayer.visible = false

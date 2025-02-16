@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://dbdd3k61gotwk"]
 
 [ext_resource type="Texture2D" uid="uid://bxg8sl8yqntgy" path="res://assets/images/scenes/StatBar1/border.png" id="1"]
 [ext_resource type="Script" path="res://scenes/StatBar1/StatBar1.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://36cwewtajawn" path="res://assets/images/scenes/StatBar1/content.png" id="5"]
 
 [node name="StatBar1" type="Node2D"]
-script = ExtResource( 4 )
+script = ExtResource("4")
 percent = 100
 
 [node name="Content" type="NinePatchRect" parent="."]
@@ -13,7 +13,7 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 39.0
 offset_bottom = 4.0
-texture = ExtResource( 5 )
+texture = ExtResource("5")
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
@@ -22,7 +22,7 @@ patch_margin_bottom = 1
 [node name="Container" type="NinePatchRect" parent="."]
 offset_right = 40.0
 offset_bottom = 5.0
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1

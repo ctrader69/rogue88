@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://chjegtq065pnm"]
 
 [ext_resource type="Script" path="res://scenes/Hud/Hud.gd" id="1"]
-[ext_resource type="PackedScene" path="res://scenes/StatBar1/StatBar1.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://dbdd3k61gotwk" path="res://scenes/StatBar1/StatBar1.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://dqnomp3qi4fvr" path="res://assets/images/scenes/heart.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://cviv1h4blip63" path="res://assets/images/scenes/coin-purse.png" id="4"]
-[ext_resource type="FontFile" uid="uid://b1owmvnwyuglw" path="res://assets/images/Fonts/pico8font.png" id="5_acr02"]
+[ext_resource type="FontFile" uid="uid://de7e0cm67ph0g" path="res://assets/images/Fonts/tiny.png" id="5_mewcj"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "idle"
@@ -54,5 +54,6 @@ offset_left = 41.0
 offset_top = 0.5
 offset_right = 81.0
 offset_bottom = 14.5
-theme_override_fonts/font = ExtResource("5_acr02")
+theme_override_fonts/font = ExtResource("5_mewcj")
+theme_override_font_sizes/font_size = 7
 text = "0"
