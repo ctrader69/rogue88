@@ -31,9 +31,9 @@ var ITEMS = {
 	},
 	'charcoal'  : {
 		'description' 		: "A greasy lump of coal.\nCan be used to\nmake torches.",
-		'drop-image'        : 'res://assets/items/charcoal-drop.png',
+		'drop-image'        : 'res://assets/images/items/charcoal-drop.png',
 		'equipable'         : false,
-		'inventory-texture'	: load('res://assets/items/charcoal-inventory.png'),
+		'inventory-texture'	: load('res://assets/images/items/charcoal-inventory.png'),
 		'name'              : 'Charcoal',
 		'stackable' 		: true,
 	},

@@ -16,6 +16,15 @@ var DATA = {
 		'scene'    : preload("res://scenes/Weapons/Bow/bow.tscn"),
 		'solid'    : false,
 	},
+	'charcoal' : {
+		'scene'    : preload("res://scenes/Item/Item.tscn"),
+		'init'     : {
+			'gametype' : 'charcoal',
+			'texture'  : preload('res://assets/images/items/charcoal-drop.png'),
+		},
+		'solid'    : false,
+		'pushable' : false,
+	},
 	'chest' : {
 		'init'     : {'dir' : 'down', 'locked' : false},
 		'pushable' : false,

@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var Event = get_node("/root/Events")
 var gametype = 'fireplace'
-
 var contents = 'firewood'
 var lit = false
 var perpetual = false

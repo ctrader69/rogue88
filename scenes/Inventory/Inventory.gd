@@ -144,6 +144,7 @@ func add(n):
 	assert(n.gametype in Items.ITEMS)
 	var initdata = Items.ITEMS[n.gametype]
 	initdata['equipped'] = false
+	initdata['count'] = 1
 	item.init(initdata)
 	container.add_child(item)
 	item.set_owner(container)
