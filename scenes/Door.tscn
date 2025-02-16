@@ -1,22 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjbwfxv0jjqtb"]
+[gd_scene load_steps=7 format=3 uid="uid://cjbwfxv0jjqtb"]
 
-[ext_resource type="AudioStream" uid="uid://x4os7my477jl" path="res://assets/sfx/door-open.ogg" id="1"]
+[ext_resource type="AudioStream" uid="uid://x4os7my477jl" path="res://assets/sounds/door-open.ogg" id="1"]
 [ext_resource type="Texture2D" uid="uid://w5ghgacki038" path="res://assets/doors.png" id="2"]
-[ext_resource type="Shader" path="res://scenes/Door.gdshader" id="2_tqm14"]
-[ext_resource type="AudioStream" uid="uid://dyil1soshbelo" path="res://assets/sfx/door-close.ogg" id="3"]
+[ext_resource type="AudioStream" uid="uid://dyil1soshbelo" path="res://assets/sounds/door-close.ogg" id="3"]
 [ext_resource type="Script" path="res://scenes/Door.gd" id="4"]
-[ext_resource type="AudioStream" uid="uid://bbsyyn3mf0ila" path="res://scenes/Door/door_ripped_2.wav" id="5_licyo"]
-[ext_resource type="AudioStream" uid="uid://clrsd87nb5yvv" path="res://scenes/Door/door_ripped_1.wav" id="6_mn4ex"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4yw6j"]
-shader = ExtResource("2_tqm14")
-shader_parameter/freq = 1.0
+[ext_resource type="AudioStream" uid="uid://bbsyyn3mf0ila" path="res://assets/sounds/scenes/Door/door_ripped_2.wav" id="5_licyo"]
+[ext_resource type="AudioStream" uid="uid://clrsd87nb5yvv" path="res://assets/sounds/scenes/Door/door_ripped_1.wav" id="6_mn4ex"]
 
 [node name="Door" type="Node2D"]
 script = ExtResource("4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_4yw6j")
 texture = ExtResource("2")
 centered = false
 flip_h = true
