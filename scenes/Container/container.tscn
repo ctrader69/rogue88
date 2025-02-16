@@ -65,4 +65,5 @@ centered = false
 position = Vector2(1.84375, 2)
 shape = SubResource("RectangleShape2D_2jcx5")
 
+[connection signal="button_pressed" from="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/AllButton" to="." method="_on_all_button_button_pressed"]
 [connection signal="button_pressed" from="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_check_button_button_pressed"]
