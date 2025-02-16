@@ -47,5 +47,5 @@ layout_mode = 2
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 theme = ExtResource("4_muywc")
-text = "All your base are belong to us!$
-They mostly come at night, mostly."
+text = "All your base are belong to us"
+autowrap_mode = 2
