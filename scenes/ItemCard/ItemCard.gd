@@ -2,19 +2,24 @@ extends Node2D
 
 @onready var Items = get_node("/root/Items")
 
-var item : String = ''
+var gametype : String = ''
 
 func _ready():
 	pass
 
-func item_set(item):
-	self.item = item
-	$Name.text = Items.ITEMS[item].name
-	$Description.text = Items.ITEMS[item].description
-	$Item.texture = Items.ITEMS[item]['inventory-texture']
+# TODO: Fixup my terminology obj/item etc.
+#       assume everything can be held, not just 'items'.
+#       some objects are Inanimate (eg. charcoal).
+
+func item_set(gametype):
+	self.gametype = gametype
+	assert(gametype in Items.ITEMS)
+	$Name.text = Items.ITEMS[gametype]['name']
+	$Description.text = Items.ITEMS[gametype]['description']
+	$Item.texture = Items.ITEMS[gametype]['inventory-texture']
 	
 func item_clear():
-	item = ''
+	gametype = ''
 	$Name.text = ''
 	$Description.text = ''
 	$Item.texture = null

@@ -44,10 +44,3 @@ enemies from afar!
 Atk: 5
 Def: 0
 Acc: 5"
-
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(0.0823529, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_0w14u")
-text = "bugger"

@@ -5,15 +5,15 @@
 #   --------------------------------
 #   items[]:
 #     Vector2(0, 0) -> InventoryItem
+#                      Item
 #     Vector2(1, 0) -> InventoryItem
+#                      Item
 #     ...
 #     Vector2(9, 9) -> InventoryItem
+#                      Item
 #
 #  InventoryItem
-#    sprite + count label
-#    --------------------
-#    item - item name
-#
+#    
 #  ItemCard
 #    card sprite + item sprite + name + description labels
 #    -----------------------------------------------------
@@ -56,23 +56,21 @@ func card_hide_finished_handler():
 		card_show()
 
 func card_hide():
-	pass
-#	$ItemCard.item_clear()
-#	card_hidden = true
-#	var tw = create_tween()
-#	tw.set_trans(Tween.TRANS_QUINT)
-#	tw.set_ease(Tween.EASE_OUT)
-#	var twr = tw.tween_property($ItemCard, "position", Vector2(128, 5), CARD_SPEED)
-#	twr.connect('finished', Callable(self, 'card_hide_finished_handler'))
+	$ItemCard.item_clear()
+	card_hidden = true
+	var tw = create_tween()
+	tw.set_trans(Tween.TRANS_QUINT)
+	tw.set_ease(Tween.EASE_OUT)
+	var twr = tw.tween_property($ItemCard, "position", Vector2(128, 5), CARD_SPEED)
+	twr.connect('finished', Callable(self, 'card_hide_finished_handler'))
 
 func card_show():
-	pass
-#	$ItemCard.item_set(items[selection].item)
-#	card_hidden = false
-#	var tw = create_tween()
-#	tw.set_trans(Tween.TRANS_QUINT)
-#	tw.set_ease(Tween.EASE_OUT)
-#	tw.tween_property($ItemCard, "position", Vector2(64, 5), CARD_SPEED)
+	$ItemCard.item_set(items[selection]['Item'].gametype)
+	card_hidden = false
+	var tw = create_tween()
+	tw.set_trans(Tween.TRANS_QUINT)
+	tw.set_ease(Tween.EASE_OUT)
+	tw.tween_property($ItemCard, "position", Vector2(64, 5), CARD_SPEED)
 	
 func card_update():
 	if not card_hidden:
@@ -109,19 +107,19 @@ func _unhandled_input(event):
 				card_update()
 		if event.is_action_pressed('interact'):
 			if selection in items:
-				var n = items[selection]['node']
-				var item = items[selection]['item']
+				var inventory_item = items[selection]['InventoryItem']
+				var item = items[selection]['Item']
 				if item.equipped:
-					if actor.unequip(n):
+					if actor.unequip(item):
 						item.toggle_equipped()
 				else:
-					if actor.equip(n):
+					if actor.equip(item):
 						item.toggle_equipped()
 		if event.is_action_pressed('drop'):
 			if selection in items:
-				var n = items[selection]['node']
-				var item = items[selection]['item']
-				if actor.drop(n):
+				var inventory_item = items[selection]['InventoryItem']
+				var item = items[selection]['Item']
+				if actor.drop(item):
 					items.erase(selection)
 					item.queue_free()
 		if event.is_action_pressed('inventory'):
@@ -136,37 +134,44 @@ func find_free_slot():
 			return coord
 	return null
 	
-func add(n): 
+func add(item):
+	assert(item.gametype in Items.ITEMS)
+	
+	# TODO: full handling.
 	var coord = find_free_slot()
+	
+	# TODO: replace these two lines with Container() method.
 	var i = coord_to_index(coord)
 	var container = $NinePatchRect/GridContainer.get_child(i)
-	var item = preload('res://scenes/InventoryItem.tscn').instantiate()
-	assert(n.gametype in Items.ITEMS)
-	var initdata = Items.ITEMS[n.gametype]
-	initdata['equipped'] = false
-	initdata['count'] = 1
-	item.init(initdata)
-	container.add_child(item)
-	item.set_owner(container)
+	
+	var inventory_item = preload('res://scenes/InventoryItem.tscn').instantiate()
+	var data = Items.ITEMS[item.gametype]
+	data['equipped'] = false
+	data['count'] = 1
+	inventory_item.init(data)
+	container.add_child(inventory_item)
+	inventory_item.set_owner(container)
+
 	items[coord] = {
-		'node' : n,
-		'item' : item
+		'InventoryItem' : inventory_item,
+		'Item' : item
 	}
 	
-func remove(n):
-#	for key in items.keys():
-#		if item == items[key].item:
-#			var n = items[key]
-#			n.remove()
-#			if n.count == 0:
-#				items.erase(key)
-#				n.queue_free()
-	pass
+func remove(gametype):
+	for coord in items.keys():
+		var item = items[coord]['Item']
+		if gametype == item.gametype:
+			pass
+			#n.remove()
+			#if n.count == 0:
+				#items.erase(coord)
+				#n.queue_free()
 	
-func has(item):
-#	for key in items.keys():
-#		if item == items[key].item:
-#			return true
+func has(gametype):
+	for coord in items.keys():
+		var item = items[coord]['Item']
+		if gametype == item.gametype:
+			return true
 	return false
 		
 func tween_selector(dst: Vector2):
