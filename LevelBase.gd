@@ -21,95 +21,11 @@ func exit_room(r: Vector2):
 func enter_room(r: Vector2):
 	print("LevelBase::entering_room [%d,%d]" % [r.x, r.y])
 	
-var CELLDATA = {
-	'base' : {
-		0 : {
-			'name'  : 'wall',
-			'solid' : true,
-		},
-		1 : {
-			'name'  : 'unused',
-			'solid' : false,
-		},
-		2 : {
-			'name'  : 'unused',
-			'solid' : false,
-		},
-		3 : {
-			'name'  : 'abyss',
-			'solid' : true,
-		},
-		4 : {
-			'name'  : 'floor',
-			'solid' : false,
-		},
-		5 : {
-			'name'  : 'abyss',
-			'solid' : true,
-		},
-		8 : {
-			'name' : 'ceramic-black-green',
-			'solid' : false,
-		},
-		21 : {
-			'name' : 'floor-walnut',
-			'solid' : false,
-		},
-		24 : {
-			'name'  : 'wall',
-			'solid' : true,
-		},
-		25 : {
-			'name'  : 'wall',
-			'solid' : true,
-		},
-		26 : {
-			'name'  : 'wall',
-			'solid' : true,
-		},
-		27 : {
-			'name'  : 'wall',
-			'solid' : true,
-		},
-	},
-	'enemy' : {
-		0 : {
-			'name'  : 'bat',
-			'blood' : 'red',
-			'scene' : preload("res://scenes/Bat.tscn"),
-			'solid' : true,
-		},
-		1 : {
-			'name'  : 'zombie',
-			'blood' : 'red',
-			'scene' : preload("res://scenes/Zombie/Zombie.tscn"),
-			'solid' : true,
-		},
-		2 : {
-			'name'  : 'poisonous-frog',
-			'blood' : 'purple',
-			'scene' : preload("res://scenes/MOBs/PoisonousFrog/PoisonousFrog.tscn"),
-			'solid' : true,
-		},
-		3 : {
-			'name' : 'rat',
-			'blood' : 'purple',
-			'scene' : preload("res://scenes/MOBs/Rat/Rat.tscn"),
-			'solid' : true,
-		},
-
-	}
-}
-
 var nodes = {
 	'base' : {
 	},
-	'tapestry' : {
-	},
 	'obj' : {
 	},
-	'enemy' : {
-	}
 }
 var mapdata = {}
 
