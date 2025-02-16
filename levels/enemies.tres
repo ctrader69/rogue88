@@ -1,0 +1,140 @@
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://bj871d7i7ixuq"]
+
+[ext_resource type="Texture2D" uid="uid://df1nxi4jilt66" path="res://assets/bat.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cy5i7wv146nl3" path="res://assets/enemies.png" id="2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_whis7"]
+texture = ExtResource("1")
+texture_region_size = Vector2i(8, 8)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_htty5"]
+texture = ExtResource("2")
+texture_region_size = Vector2i(8, 8)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_831je"]
+texture = ExtResource("2")
+margins = Vector2i(8, 0)
+texture_region_size = Vector2i(8, 8)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pa2nb"]
+texture = ExtResource("2")
+margins = Vector2i(16, 0)
+texture_region_size = Vector2i(8, 8)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y6y0n"]
+texture = ExtResource("2")
+margins = Vector2i(24, 0)
+texture_region_size = Vector2i(8, 8)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+
+[resource]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetAtlasSource_whis7")
+sources/1 = SubResource("TileSetAtlasSource_htty5")
+sources/2 = SubResource("TileSetAtlasSource_831je")
+sources/3 = SubResource("TileSetAtlasSource_pa2nb")
+sources/4 = SubResource("TileSetAtlasSource_y6y0n")

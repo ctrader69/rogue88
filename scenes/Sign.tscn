@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgf7ehw3r176i"]
+
+[ext_resource type="Texture2D" uid="uid://2p15j3bhlbtv" path="res://assets/sign.png" id="1"]
+[ext_resource type="Script" path="res://scenes/Sign.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://sf0q07drfrki" path="res://assets/dialog-1-ninepatch.png" id="4"]
+[ext_resource type="FontFile" uid="uid://b1owmvnwyuglw" path="res://assets/images/Fonts/pico8font.png" id="4_ig67w"]
+
+[node name="Sign" type="Node2D"]
+script = ExtResource("2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+custom_minimum_size = Vector2(64, 32)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -16.0
+offset_right = 32.0
+offset_bottom = 16.0
+texture = ExtResource("4")
+region_rect = Rect2(0, 0, 9, 9)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/NinePatchRect"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 63.0
+offset_bottom = 31.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.501961, 0.501961, 0.501961, 1)
+theme_override_fonts/font = ExtResource("4_ig67w")

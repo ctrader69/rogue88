@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://chjegtq065pnm"]
+
+[ext_resource type="Script" path="res://scenes/Hud/Hud.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/StatBar1/StatBar1.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://dqnomp3qi4fvr" path="res://assets/images/scenes/heart.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cviv1h4blip63" path="res://assets/images/scenes/coin-purse.png" id="4"]
+[ext_resource type="FontFile" uid="uid://b1owmvnwyuglw" path="res://assets/images/Fonts/pico8font.png" id="5_acr02"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kyldr"]
+_data = {
+"idle": SubResource("1")
+}
+
+[node name="Hud" type="Node2D"]
+script = ExtResource("1")
+
+[node name="StatBar1" parent="." instance=ExtResource("2")]
+position = Vector2(3, 0.5)
+
+[node name="Heart" type="Sprite2D" parent="."]
+texture = ExtResource("3")
+centered = false
+hframes = 10
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Heart"]
+libraries = {
+"": SubResource("AnimationLibrary_kyldr")
+}
+
+[node name="CoinPurse" type="Sprite2D" parent="."]
+position = Vector2(36, 0)
+texture = ExtResource("4")
+centered = false
+
+[node name="CoinCount" type="Label" parent="."]
+offset_left = 41.0
+offset_top = 0.5
+offset_right = 81.0
+offset_bottom = 14.5
+theme_override_fonts/font = ExtResource("5_acr02")
+text = "0"

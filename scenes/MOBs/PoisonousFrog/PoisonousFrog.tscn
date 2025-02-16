@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://btjfcd58jvs6n"]
+
+[ext_resource type="Script" path="res://scenes/MOBs/PoisonousFrog/PoisonousFrog.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://b263qcsqhmr1r" path="res://assets/images/scenes/MOBs/PoisonousFrog/frog.png" id="2_vkcoo"]
+[ext_resource type="Texture2D" uid="uid://duygsw8wuiom1" path="res://assets/images/scenes/MOBs/PoisonousFrog/eyelid.png" id="3_qwt1r"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "blink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/EyelidLeft:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 2, 2),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/EyelidRight:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 2, 2),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1), Vector2(1, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yj801"]
+_data = {
+"blink": SubResource("1")
+}
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(2, 1.5)
+
+[node name="PoisonousFrog" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Gfx" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Shadow" type="Sprite2D" parent="Gfx"]
+position = Vector2(0, 0.5)
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Gfx"]
+texture = ExtResource("2_vkcoo")
+centered = false
+
+[node name="EyelidLeft" type="Sprite2D" parent="Gfx/Sprite2D"]
+position = Vector2(2, 4)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("3_qwt1r")
+centered = false
+
+[node name="EyelidRight" type="Sprite2D" parent="Gfx/Sprite2D"]
+position = Vector2(4, 4)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("3_qwt1r")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Gfx"]
+libraries = {
+"": SubResource("AnimationLibrary_yj801")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4, 6.5)
+shape = SubResource("2")
+
+[node name="BloodSplatterPosition" type="Marker2D" parent="."]
+position = Vector2(3.5, 6.5)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

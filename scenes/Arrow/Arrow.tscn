@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7yb67xqos0q5"]
+
+[ext_resource type="Script" path="res://scenes/Arrow/Arrow.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://caje7eyersooj" path="res://assets/arrows.png" id="2_58xxi"]
+[ext_resource type="AudioStream" uid="uid://cmx7v3ipceqlr" path="res://assets/images/scenes/Arrow/arrow.ogg" id="3"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(2.48984, 0.505852)
+
+[sub_resource type="Animation" id="2"]
+resource_name = "vanish"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cr1q3"]
+_data = {
+"vanish": SubResource("2")
+}
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(3.09688, 0.508233)
+
+[node name="Arrow" type="CharacterBody2D"]
+script = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.523074, -0.00828099)
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_58xxi")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cr1q3")
+}
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-0.0847656, -0.00923395)
+shape = SubResource("3")
+
+[node name="ReleaseSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3")

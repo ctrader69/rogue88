@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://pkcqmxsibscx"]
+
+[ext_resource type="Texture2D" uid="uid://bwvclc276eyg1" path="res://assets/images/scenes/ItemCard/background.png" id="1"]
+
+[node name="ItemCard" type="Node2D"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1")
+region_rect = Rect2(337, 109, 1, 0)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3

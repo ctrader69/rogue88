@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://b53nss64xe5d0"]
+
+[ext_resource type="Script" path="res://scenes/Container/container.gd" id="1_fxoap"]
+[ext_resource type="Texture2D" uid="uid://chc8v2edu3kmp" path="res://assets/images/scenes/Container/container-background.png" id="2_knssw"]
+[ext_resource type="PackedScene" uid="uid://vlp7f5pvophh" path="res://scenes/Container/container_all_button.tscn" id="3_edh3q"]
+[ext_resource type="Texture2D" uid="uid://c4xd2eomfk3an" path="res://assets/cursor-plus.png" id="3_irrkk"]
+[ext_resource type="PackedScene" uid="uid://0ulxj8mrfdmn" path="res://scenes/Container/check_button.tscn" id="6_cna18"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jcx5"]
+size = Vector2(1.6875, 1.375)
+
+[node name="Container" type="Node2D"]
+script = ExtResource("1_fxoap")
+rows = 3
+columns = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 32.0
+offset_bottom = 46.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 1
+theme_override_constants/v_separation = 1
+columns = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="AllButton" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_edh3q")]
+layout_mode = 2
+
+[node name="CheckButton" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("6_cna18")]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_knssw")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="Cursor" type="Sprite2D" parent="."]
+texture = ExtResource("3_irrkk")
+centered = false
+
+[node name="Area2D" type="Area2D" parent="Cursor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor/Area2D"]
+position = Vector2(1.84375, 2)
+shape = SubResource("RectangleShape2D_2jcx5")
+
+[connection signal="button_pressed" from="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_check_button_button_pressed"]

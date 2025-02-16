@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3hihywxu7m3l"]
+
+[ext_resource type="Script" path="res://Walk.gd" id="1_gmejg"]
+
+[node name="Walk" type="Node"]
+script = ExtResource("1_gmejg")

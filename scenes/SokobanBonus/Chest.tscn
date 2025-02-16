@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd504qv3mptmi"]
+
+[ext_resource type="Texture2D" uid="uid://ddvjs6o16l42q" path="res://assets/images/scenes/SokobanBonus/chest.png" id="1"]
+[ext_resource type="Script" path="res://scenes/SokobanBonus/Chest.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bis8ymtnvii68" path="res://assets/images/scenes/SokobanBonus/treasure-glow.png" id="3"]
+
+[node name="Chest" type="Node2D"]
+position = Vector2(32, 32)
+script = ExtResource("2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1")
+centered = false
+hframes = 3
+
+[node name="Glow" type="Sprite2D" parent="."]
+position = Vector2(0.5, -5)
+texture = ExtResource("3")
+centered = false

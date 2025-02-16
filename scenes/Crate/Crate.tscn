@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource type="Texture2D" uid="uid://cqnnfwomkcm4v" path="res://assets/images/scenes/Crate/crate.png" id="2"]
+[ext_resource type="Script" path="res://scenes/Crate/Crate.gd" id="3"]
+
+[node name="Crate" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Crate" type="Sprite2D" parent="."]
+texture = ExtResource( 2 )
+centered = false

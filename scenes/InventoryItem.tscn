@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://r36d4jset6u8"]
+
+[ext_resource type="Script" path="res://scenes/InventoryItem.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://6ojb0frdrqia" path="res://assets/items/bow-wooden-inventory.png" id="2_ufb87"]
+[ext_resource type="FontFile" uid="uid://b1owmvnwyuglw" path="res://assets/images/Fonts/pico8font.png" id="2_yhddt"]
+
+[sub_resource type="Shader" id="2"]
+code = "shader_type canvas_item;
+
+uniform bool enabled = false;
+uniform bool rainbow  = false; //Activate the rainbow or select you color
+uniform vec4 line_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);//color line
+uniform float line_scale : hint_range(0, 20) = 1.2;    // thickness of the line
+uniform float frequency : hint_range(0.0, 2.0) = 0.5;  // frequency of the rainbow
+uniform float light_offset : hint_range(0.00001, 1.0) = 0.5;   // this offsets all color channels;
+uniform float alpha : hint_range(0.0, 1.0) = 1.0;
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * line_scale;
+	
+	float outline = texture(TEXTURE, UV + vec2(-size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, -size.y)).a;
+	outline = min(outline, 1.0);
+	
+	vec4 animated_line_color = vec4(
+		light_offset + sin(2.0 *3.14 *frequency *TIME),
+		light_offset + sin(2.0 *3.14 *frequency *TIME + radians(120.0)),
+		light_offset + sin(2.0 *3.14 *frequency *TIME + radians(240.0)),
+		alpha);
+	
+	vec4 color = texture(TEXTURE, UV);
+
+	if (enabled && rainbow) {
+		COLOR = mix(color, animated_line_color, outline - color.a);
+	} else if (enabled) {
+		COLOR = mix(color, line_color , outline - color.a);
+	} else {
+		COLOR = color;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="3"]
+shader = SubResource("2")
+shader_parameter/enabled = false
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(0, 0.00784314, 0.482353, 1)
+shader_parameter/line_scale = 0.5
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[node name="InventoryItem" type="Node2D"]
+position = Vector2(1, 1)
+script = ExtResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("3")
+texture = ExtResource("2_ufb87")
+centered = false
+
+[node name="Count" type="Label" parent="Sprite2D"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 19.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_fonts/font = ExtResource("2_yhddt")
+text = "1"
+
+[node name="Equipped" type="Label" parent="Sprite2D"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 46.0
+offset_bottom = 20.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_fonts/font = ExtResource("2_yhddt")
+text = "E"

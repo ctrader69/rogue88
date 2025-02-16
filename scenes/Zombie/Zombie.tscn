@@ -1,0 +1,162 @@
+[gd_scene load_steps=20 format=3 uid="uid://duvaaskaxjo4k"]
+
+[ext_resource type="Texture2D" uid="uid://ctpd8cf1ye5nq" path="res://assets/shadow.png" id="2_7lryy"]
+[ext_resource type="Script" path="res://scenes/Zombie/Zombie.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://blg5d38275tn" path="res://assets/images/scenes/Zombie/Zombie-torso.png" id="3_p6m3u"]
+[ext_resource type="Texture2D" uid="uid://btt1qx30ii2be" path="res://assets/images/scenes/Zombie/Zombie-legs.png" id="3_raoet"]
+[ext_resource type="PackedScene" path="res://Wound.tscn" id="5"]
+[ext_resource type="Texture2D" uid="uid://ro0ndmbn8bae" path="res://assets/images/scenes/Zombie/Zombie-head.png" id="5_kl567"]
+[ext_resource type="Shader" path="res://shaders/hitflash.gdshader" id="7"]
+[ext_resource type="Script" path="res://scenes/Zombie/AI.gd" id="8_b1x4v"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence_star.gd" id="9_rga60"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="9_vaso3"]
+[ext_resource type="Script" path="res://scenes/Zombie/Wait.gd" id="12_gcwcj"]
+[ext_resource type="PackedScene" uid="uid://v0gkc6xpg0b1" path="res://action_leaf_walk.tscn" id="13_cmwkb"]
+
+[sub_resource type="ShaderMaterial" id="3"]
+resource_local_to_scene = true
+shader = ExtResource("7")
+shader_parameter/flash = false
+
+[sub_resource type="Animation" id="1"]
+resource_name = "heave"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gfx/Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1.5), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gfx/Torso:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqxfw"]
+_data = {
+"heave": SubResource("1")
+}
+
+[sub_resource type="Animation" id="5"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:material/shader_param/flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="4"]
+resource_name = "hitflash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:material:shader_param/flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sgr08"]
+_data = {
+"RESET": SubResource("5"),
+"hitflash": SubResource("4")
+}
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(2.52992, 3.57165)
+
+[node name="Zombie" type="Node2D"]
+script = ExtResource("3")
+
+[node name="Gfx" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Shadow" type="Sprite2D" parent="Gfx"]
+position = Vector2(0.5, 0.5)
+texture = ExtResource("2_7lryy")
+centered = false
+
+[node name="Legs" type="Sprite2D" parent="Gfx"]
+texture = ExtResource("3_raoet")
+centered = false
+
+[node name="Torso" type="Sprite2D" parent="Gfx"]
+material = SubResource("3")
+texture = ExtResource("3_p6m3u")
+centered = false
+
+[node name="Wound" parent="Gfx/Torso" instance=ExtResource("5")]
+position = Vector2(4, 2.5)
+emitting = true
+amount = 2
+
+[node name="Head" type="Sprite2D" parent="Gfx"]
+texture = ExtResource("5_kl567")
+centered = false
+
+[node name="TorsoAnimation" type="AnimationPlayer" parent="Gfx"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_dqxfw")
+}
+
+[node name="HitFlash" type="AnimationPlayer" parent="Gfx"]
+libraries = {
+"": SubResource("AnimationLibrary_sgr08")
+}
+
+[node name="HitBox" type="Area2D" parent="Gfx"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gfx/HitBox"]
+position = Vector2(4.50725, 4.44568)
+shape = SubResource("2")
+
+[node name="HitSfx" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AI" type="Node" parent="."]
+script = ExtResource("8_b1x4v")
+
+[node name="SelectorComposite" type="Node" parent="AI"]
+script = ExtResource("9_vaso3")
+
+[node name="SequenceStarComposite" type="Node" parent="AI/SelectorComposite"]
+script = ExtResource("9_rga60")
+
+[node name="WalkLeft" parent="AI/SelectorComposite/SequenceStarComposite" instance=ExtResource("13_cmwkb")]
+dir = Vector2i(-1, 0)
+
+[node name="Wait" type="Node" parent="AI/SelectorComposite/SequenceStarComposite"]
+script = ExtResource("12_gcwcj")
+wait_n_turns = 5
+
+[node name="WalkRight" parent="AI/SelectorComposite/SequenceStarComposite" instance=ExtResource("13_cmwkb")]
+
+[connection signal="area_entered" from="Gfx/HitBox" to="." method="_on_HitBox_area_entered"]
+[connection signal="finished" from="HitSfx" to="." method="_on_HitSfx_finished"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://0ulxj8mrfdmn"]
+
+[ext_resource type="Script" path="res://scenes/Container/check_button.gd" id="1_cdg3r"]
+[ext_resource type="Texture2D" uid="uid://d865o45fy03q" path="res://assets/images/scenes/Container/button.png" id="1_vysr4"]
+[ext_resource type="Texture2D" uid="uid://c8fhhrqimvxwd" path="res://assets/images/scenes/Container/check.png" id="2_qh6yq"]
+
+[node name="CheckButton" type="Control"]
+custom_minimum_size = Vector2(12, 13)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 12.0
+offset_bottom = 13.0
+mouse_filter = 1
+script = ExtResource("1_cdg3r")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(12, 13)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vysr4")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_top = 1.0
+offset_right = 4.0
+offset_bottom = 8.0
+grow_horizontal = 2
+texture = ExtResource("2_qh6yq")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

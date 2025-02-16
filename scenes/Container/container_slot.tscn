@@ -1,0 +1,45 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjr1diucxe2b1"]
+
+[ext_resource type="Script" path="res://scenes/Container/container_slot.gd" id="1_0enwf"]
+[ext_resource type="Texture2D" uid="uid://d1clwuoj0dsbf" path="res://assets/images/scenes/Container/slot.png" id="1_q5w41"]
+[ext_resource type="Shader" path="res://scenes/Container/slot.gdshader" id="2_gs64p"]
+[ext_resource type="Texture2D" uid="uid://n1ysakj8x6fr" path="res://assets/images/scenes/Container/slot-outline.png" id="3_xrhtb"]
+[ext_resource type="Texture2D" uid="uid://6ojb0frdrqia" path="res://assets/items/bow-wooden-inventory.png" id="4_p56wr"]
+[ext_resource type="Shader" path="res://scenes/Container/container_slot_background.gdshader" id="5_8tigh"]
+[ext_resource type="Texture2D" uid="uid://ckpdgxposqsre" path="res://assets/images/scenes/Container/slot-background-mask.png" id="6_m8vv0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8nah"]
+shader = ExtResource("2_gs64p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stf4i"]
+resource_local_to_scene = true
+shader = ExtResource("5_8tigh")
+shader_parameter/selected = 0.0
+
+[node name="ContainerSlot" type="Control"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0enwf")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_q5w41")
+centered = false
+
+[node name="OutlineMask" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_p8nah")
+texture = ExtResource("3_xrhtb")
+centered = false
+
+[node name="BackgroundMask" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_stf4i")
+texture = ExtResource("6_m8vv0")
+centered = false
+
+[node name="Item" type="Sprite2D" parent="."]
+texture = ExtResource("4_p56wr")
+centered = false
+offset = Vector2(0, 1)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

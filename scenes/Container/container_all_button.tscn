@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://vlp7f5pvophh"]
+
+[ext_resource type="Texture2D" uid="uid://d865o45fy03q" path="res://assets/images/scenes/Container/button.png" id="1_iajme"]
+[ext_resource type="Script" path="res://scenes/Container/container_all_button.gd" id="1_t67kn"]
+[ext_resource type="Texture2D" uid="uid://cjalj82ubp5vk" path="res://assets/images/scenes/Container/all.png" id="2_j7g6g"]
+
+[node name="AllButton" type="Control"]
+custom_minimum_size = Vector2(17, 13)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 31.0
+offset_bottom = 13.0
+size_flags_horizontal = 3
+mouse_filter = 1
+script = ExtResource("1_t67kn")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(17, 13)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_iajme")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -6.5
+offset_top = 2.0
+offset_right = 6.5
+offset_bottom = 8.0
+grow_horizontal = 2
+texture = ExtResource("2_j7g6g")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

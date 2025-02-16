@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3wolabiy11is"]
+
+[ext_resource type="Texture2D" uid="uid://b6vi65w2wjdtx" path="res://assets/images/demos/Explosion1/explosion1.png" id="1"]
+
+[sub_resource type="CanvasItemMaterial" id="2"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="3"]
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+material = SubResource("2")
+position = Vector2(4, 6)
+amount = 10
+process_material = SubResource("3")
+texture = ExtResource("1")
+lifetime = 0.5

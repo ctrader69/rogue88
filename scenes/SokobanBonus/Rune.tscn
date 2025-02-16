@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource type="Texture2D" uid="uid://d4mffovif62rs" path="res://assets/images/scenes/SokobanBonus/runes.png" id="1"]
+[ext_resource type="Script" path="res://scenes/SokobanBonus/Rune.gd" id="2"]
+
+[node name="Rune" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource( 1 )
+centered = false
+hframes = 16

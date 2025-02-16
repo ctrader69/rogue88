@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://v0gkc6xpg0b1"]
+
+[ext_resource type="Script" path="res://ActionLeafWalk.gd" id="1_sbaug"]
+
+[node name="ActionLeafWalk" type="Node"]
+script = ExtResource("1_sbaug")

@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxtxvd6gsqbhk"]
+
+[ext_resource type="Texture2D" uid="uid://b34ty3uuo78ux" path="res://assets/chest.png" id="1"]
+[ext_resource type="Script" path="res://Chest.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://b0m8c87jmsttj" path="res://assets/sounds/Coin01.wav" id="3"]
+[ext_resource type="AudioStream" uid="uid://iykt3e0rqcdg" path="res://assets/sounds/close chest.wav" id="4"]
+[ext_resource type="AudioStream" uid="uid://k660i2ubpojf" path="res://assets/sounds/open chest.wav" id="5"]
+[ext_resource type="AudioStream" uid="uid://dcx5fjtq0lbml" path="res://assets/sounds/nab.wav" id="6"]
+
+[node name="Chest" type="Node2D"]
+script = ExtResource("2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1")
+centered = false
+hframes = 3
+
+[node name="ChestOpen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5")
+
+[node name="ChestClose" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4")
+
+[node name="ChestSuccess" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3")
+
+[node name="Nabbed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 11

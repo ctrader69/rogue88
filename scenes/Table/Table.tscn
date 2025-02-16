@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource type="Script" path="res://scenes/Table/Table.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bsy1kcithc0l0" path="res://assets/images/scenes/Table/table.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c6cap8tdkh1kc" path="res://assets/images/scenes/Table/shadow.png" id="3"]
+
+[node name="Table" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="DrinkPositionTopLeft" type="Marker2D" parent="."]
+position = Vector2( 2.5, 2 )
+
+[node name="DrinkPositionBottomRight" type="Marker2D" parent="."]
+position = Vector2( 5.5, 4 )

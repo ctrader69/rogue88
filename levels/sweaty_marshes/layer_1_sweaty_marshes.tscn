@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="tileset_sweaty_marshes.tres" type="TileSet" id=1]
+
+[node name="1_Objects" type="TileMap"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PackedInt32Array(  )

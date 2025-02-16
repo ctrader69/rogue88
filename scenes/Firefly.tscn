@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/firefly.png" type="Texture2D" id=1]
+[ext_resource path="res://assets/firefly-glow.png" type="Texture2D" id=2]
+[ext_resource path="res://scenes/Firefly.gd" type="Script" id=3]
+[ext_resource path="res://scenes/Firefly.gdshader" type="Shader" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fly"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array( 0, 0.5, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0 ]
+}
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 4 )
+
+[node name="Firefly" type="Node2D"]
+position = Vector2( 64, 64 )
+script = ExtResource( 3 )
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource( 1 )
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+playback_speed = 10.0
+anims/fly = SubResource( 1 )
+
+[node name="Position" type="AnimationPlayer" parent="Sprite2D"]
+
+[node name="TextureRect" type="TextureRect" parent="Sprite2D"]
+material = SubResource( 6 )
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

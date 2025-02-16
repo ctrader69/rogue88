@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/vaswe.png" type="Texture2D" id=1]
+[ext_resource path="res://assets/sfx/grabvase.wav" type="AudioStream" id=2]
+[ext_resource path="res://Vase.gd" type="Script" id=3]
+
+[node name="Vase" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource( 1 )
+centered = false
+hframes = 2
+
+[node name="TreasureGrab" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )

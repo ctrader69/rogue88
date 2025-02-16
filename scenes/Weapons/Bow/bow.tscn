@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://x68uwcig55cs"]
+
+[ext_resource type="Script" path="res://scenes/Weapons/Bow/bow.gd" id="1_r1epg"]
+[ext_resource type="Texture2D" uid="uid://dh4xqloriqahx" path="res://assets/images/scenes/Weapons/Bow/bows.png" id="2_p2ldt"]
+
+[node name="Bow" type="Node2D"]
+script = ExtResource("1_r1epg")
+
+[node name="Gfx" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite" type="Sprite2D" parent="Gfx"]
+texture = ExtResource("2_p2ldt")
+centered = false
+hframes = 2
