@@ -23,7 +23,7 @@ var dungeon = {
 		'save'  : 'user://level-2.json',
 		'scene' : 'res://levels/Level2.tscn',
 		'new'   : true,
-		'spawn' : null,
+		'spawn' : Vector2(2, 1),
 		'links' : {
 			Vector2(2, 1) : {
 				'level' : 'level-1',
@@ -48,7 +48,7 @@ func _ready():
 	randomize()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Ambient.play()
-	level_change('level-1', null)
+	level_change('level-2', null)
 
 func _process(delta):
 	$CanvasLayer2/Cursor/Sprite2D.position = get_global_mouse_position() - get_node("/root/game/Camera3D").position
