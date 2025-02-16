@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://2p15j3bhlbtv" path="res://assets/sign.png" id="1"]
 [ext_resource type="Script" path="res://scenes/Sign.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://sf0q07drfrki" path="res://assets/dialog-1-ninepatch.png" id="4"]
-[ext_resource type="FontFile" uid="uid://de7e0cm67ph0g" path="res://assets/images/Fonts/tiny.png" id="4_mbwui"]
+[ext_resource type="Theme" uid="uid://cbetji2bt550i" path="res://tiny-theme.tres" id="4_muywc"]
 
 [node name="Sign" type="Node2D"]
 script = ExtResource("2")
@@ -46,11 +46,6 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.426003, 0.235125, 0.819679, 1)
-theme_override_colors/font_shadow_color = Color(0.216287, 0.0908276, 0.448485, 1)
-theme_override_constants/line_spacing = 1
-theme_override_constants/outline_size = 0
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("4_mbwui")
+theme = ExtResource("4_muywc")
 text = "All your base are belong to us!$
 They mostly come at night, mostly."

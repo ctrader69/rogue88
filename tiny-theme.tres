@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cbetji2bt550i"]
+
+[ext_resource type="FontFile" uid="uid://de7e0cm67ph0g" path="res://assets/images/Fonts/tiny.png" id="1_fv4nu"]
+
+[resource]
+Label/colors/font_color = Color(0.549437, 0.249687, 1, 1)
+Label/colors/font_shadow_color = Color(0.279625, 0.015102, 0.442986, 1)
+Label/constants/line_spacing = 1
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_fv4nu")
