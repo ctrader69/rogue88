@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://w7wbbdelgots"]
+[gd_scene load_steps=15 format=3 uid="uid://w7wbbdelgots"]
 
 [ext_resource type="Texture2D" uid="uid://bcqqrjaijs1v" path="res://assets/hero-upper.png" id="2_f1i4e"]
 [ext_resource type="Script" path="res://scenes/Player.gd" id="3"]
@@ -41,6 +41,43 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0oyxa"]
 _data = {
 "heave": SubResource("1")
+}
+
+[sub_resource type="Animation" id="Animation_72uts"]
+resource_name = "energy"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.5, 0.4, 0.5]
+}
+
+[sub_resource type="Animation" id="Animation_h1y1g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fsa2e"]
+_data = {
+"RESET": SubResource("Animation_h1y1g"),
+"energy": SubResource("Animation_72uts")
 }
 
 [node name="Player" type="Node2D" groups=["PlayerPersist"]]
@@ -89,16 +126,22 @@ visible = false
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(3.5, 1)
 color = Color(1, 0.501961, 0, 1)
-energy = 0.6
+energy = 0.5
 shadow_enabled = true
+shadow_filter = 1
 shadow_filter_smooth = 8.0
 texture = ExtResource("9_y34ar")
 texture_scale = 0.5
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PointLight2D"]
+libraries = {
+"": SubResource("AnimationLibrary_fsa2e")
+}
+
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(3.5, 1)
 color = Color(1, 0.501961, 0, 1)
-energy = 0.6
+energy = 0.5
 shadow_filter_smooth = 8.0
 texture = ExtResource("9_y34ar")
 texture_scale = 0.25

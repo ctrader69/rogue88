@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://levels/Level2.gd" id="1"]
 [ext_resource type="TileSet" uid="uid://dit4gypew8vvu" path="res://scenes/mini-fantasy-free.tres" id="2_irosh"]
-[ext_resource type="TileSet" uid="uid://bj871d7i7ixuq" path="res://levels/enemies.tres" id="4"]
+[ext_resource type="TileSet" uid="uid://bd7i8r3gn3ow7" path="res://scenes/room.tres" id="3_ghbx4"]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1")
@@ -14,7 +14,8 @@ tile_set = ExtResource("2_irosh")
 
 [node name="obj" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_set = ExtResource("4")
+tile_map_data = PackedByteArray("AAABAAIACAAAAAAAAAAEAAIABwABAAAAAAA=")
+tile_set = ExtResource("3_ghbx4")
 
 [node name="ceiling" type="TileMapLayer" parent="."]
 z_index = 3

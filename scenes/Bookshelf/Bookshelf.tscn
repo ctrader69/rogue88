@@ -1,16 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr7j7hiw5oisu"]
+[gd_scene load_steps=4 format=3 uid="uid://cr7j7hiw5oisu"]
 
 [ext_resource type="Texture2D" uid="uid://crsxskxax63c" path="res://assets/images/scenes/Bookshelf/bookshelf.png" id="1"]
 [ext_resource type="Script" path="res://scenes/Bookshelf/Bookshelf.gd" id="2"]
 
-[node name="Bookshelf" type="Node2D"]
-script = ExtResource("2")
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1kdf2"]
+polygon = PackedVector2Array(1, 0, 7, 0, 7, 8, 1, 8)
 
-[node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(0, 1)
-centered = false
+[node name="Bookshelf" type="Node2D"]
+position = Vector2(-0.5, 0)
+script = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1")
 centered = false
 hframes = 4
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+occluder = SubResource("OccluderPolygon2D_1kdf2")
