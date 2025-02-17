@@ -14,7 +14,7 @@ tile_set = ExtResource("2_irosh")
 
 [node name="obj" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAABAAIACAAAAAAAAAAEAAIABwABAAAAAAAKAAEADQAAAAAAAAAMAAIABwAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAAIACAAAAAAAAAAEAAIABwABAAAAAAAKAAEADQAAAAAAAAAMAAIABwAAAAAAAAADAAcAAgAAAAAAAAADAAoAAgAAAAAAAAA=")
 tile_set = ExtResource("3_ghbx4")
 
 [node name="ceiling" type="TileMapLayer" parent="."]
