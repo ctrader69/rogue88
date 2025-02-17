@@ -30,7 +30,7 @@ func _ready():
 	position = Vector2(1, 1) * TILESIZE
 	$Gfx/Torso/AnimationPlayer.play("heave")
 	#inventory.set_actor(self)
-	$PointLight2D/AnimationPlayer.play("energy")
+	$FlickeringLightSource.enable()
 	
 func set_level(level, spawn):
 	self.level = level

@@ -4,7 +4,7 @@ extends Node2D
 var gametype = 'fireplace'
 var contents = 'firewood'
 var lit = false
-var perpetual = false
+var perpetual = true
 
 func is_solid():
 	return true
@@ -17,7 +17,8 @@ func unit_test():
 func _ready():
 	$Sprite2D.frame = 0
 	$Flames.emitting = false
-	#unit_test()
+	$FlickeringLightSource.disable()
+	# unit_test()
 	
 func init(d : Dictionary):
 	position = d['position']
@@ -33,6 +34,7 @@ func event(e):
 			$Flames.emitting = true
 			if not perpetual:
 				$FlameTmr.start()
+			$FlickeringLightSource.enable()
 		Event.INTERACT:
 			if contents == '' and e['src'].has_item('firewood'):
 				e['src'].remove_item('firewood')
@@ -53,3 +55,4 @@ func _on_FlameTmr_timeout():
 	$Sprite2D.frame = 2
 	contents = 'charcoal'
 	lit = false
+	$FlickeringLightSource.disable()

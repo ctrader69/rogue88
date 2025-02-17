@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddvjne5isjbmw"]
+[gd_scene load_steps=7 format=3 uid="uid://ddvjne5isjbmw"]
 
 [ext_resource type="Script" path="res://scenes/Fireplace/Fireplace.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://rnh0mri0ojah" path="res://assets/fireplace.png" id="2_1waj1"]
 [ext_resource type="Gradient" uid="uid://bb2daag0mt03g" path="res://gradients/fire2.tres" id="3_r6ra6"]
+[ext_resource type="PackedScene" uid="uid://c0rhud8k0e8oj" path="res://scenes/FlickeringLightSource/flickering_light_source.tscn" id="4_d6lwa"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_bd6jp"]
 gradient = ExtResource("3_r6ra6")
@@ -12,8 +13,8 @@ emission_shape = 2
 emission_sphere_radius = 1.0
 direction = Vector3(0, -1, 0)
 spread = 10.0
-gravity = Vector3(0, 0, 0)
 initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_bd6jp")
 
 [node name="Fireplace" type="Node2D"]
@@ -34,5 +35,8 @@ lifetime = 1.3
 [node name="FlameTmr" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="FlickeringLightSource" parent="." instance=ExtResource("4_d6lwa")]
+position = Vector2(4, 8)
 
 [connection signal="timeout" from="FlameTmr" to="." method="_on_FlameTmr_timeout"]
