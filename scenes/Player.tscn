@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://w7wbbdelgots"]
+[gd_scene load_steps=12 format=3 uid="uid://w7wbbdelgots"]
 
 [ext_resource type="Texture2D" uid="uid://bcqqrjaijs1v" path="res://assets/hero-upper.png" id="2_f1i4e"]
 [ext_resource type="Script" path="res://scenes/Player.gd" id="3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cibecanelc4lr" path="res://assets/shadow-hero.png" id="5_12bm7"]
 [ext_resource type="PackedScene" uid="uid://5lndbfyw8508" path="res://scenes/Inventory/Inventory.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://Wound.tscn" id="8"]
+[ext_resource type="Texture2D" uid="uid://fli1q2flkri1" path="res://assets/images/player-light.png" id="9_y34ar"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "heave"
@@ -81,5 +82,14 @@ centered = false
 stream = ExtResource("5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("6")]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(6, 3)
+color = Color(0.933333, 0.352941, 0.152941, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("9_y34ar")
+texture_scale = 0.5

@@ -256,7 +256,6 @@ visible = false
 material = SubResource("2")
 offset_right = 128.0
 offset_bottom = 128.0
-color = Color(1, 1, 1, 0.372549)
 
 [node name="LevelContainer" type="Node2D" parent="."]
 
@@ -279,3 +278,6 @@ texture = ExtResource("4_m2xxa")
 
 [node name="Hud" parent="CanvasLayer2" instance=ExtResource("1")]
 scale = Vector2(0.5, 0.5)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.235433, 0.189867, 0.376068, 1)
