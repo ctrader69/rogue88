@@ -11,6 +11,8 @@ var astar_rect = null
 var astar_debug_enable = false
 var astar_debug_node = null
 
+var hidden_tiles = {}
+
 # assume a TileMap called 'base' always exists
 func get_base():
 	return $base
@@ -141,7 +143,21 @@ func nodes_created():
 	pass
 
 func _ready():
-	pass
+	var hide_areas = true
+	if hide_areas:
+		# hide areas
+		# TODO: store
+		# TODO: hide/store all layers
+		# TODO: restore
+		# TODO: fade-in?  replace tile with one that has a shader.  This shader can increase visibility.
+		for t in $areas.get_used_cells():
+			print(t)
+			var sourceid = $areas.get_cell_source_id(t)
+			var tiledata = $areas.get_cell_tile_data(t)
+			var id = tiledata.get_custom_data("id")
+			if id == 1:
+				$base.set_cell(t, $base.get_cell_source_id(t), Vector2i(0, 0), 0)
+				pass
 	
 func astar_debug():
 	if astar_debug_enable:

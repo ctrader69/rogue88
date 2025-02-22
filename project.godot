@@ -13,6 +13,7 @@ config_version=5
 config/name="rogue88"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://assets/images/icon.png"
 
 [autoload]

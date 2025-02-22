@@ -201,7 +201,6 @@ texture_region_size = Vector2i(8, 8)
 15:9/0/custom_data_0 = true
 1:10/0 = 0
 1:10/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_o7div")
-1:10/0/custom_data_0 = true
 4:10/0 = 0
 4:10/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_oum5n")
 4:10/0/custom_data_0 = true
@@ -266,6 +265,8 @@ texture_region_size = Vector2i(8, 8)
 15:12/0 = 0
 15:12/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_6wagt")
 0:2/0 = 0
+20:6/0 = 0
+0:0/0 = 0
 
 [resource]
 tile_size = Vector2i(8, 8)

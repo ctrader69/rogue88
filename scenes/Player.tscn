@@ -49,8 +49,9 @@ script = ExtResource("3")
 [node name="Gfx" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_top = -4.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 36.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Torso" type="Sprite2D" parent="Gfx"]
