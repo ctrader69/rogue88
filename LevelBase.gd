@@ -4,6 +4,8 @@ extends Node2D
 @onready var Items = get_node("/root/Items")
 @onready var EventBus = get_node("/root/EventBus")
 
+
+
 var description = {}
 
 var astar = null
@@ -11,7 +13,18 @@ var astar_rect = null
 var astar_debug_enable = false
 var astar_debug_node = null
 
-var hidden_tiles = {}
+# areas/regions
+#
+# areas {
+#   [N] : {
+#     'hidden' : true|false,
+#     'tiles' : [Vector2i(x,y), ... Vector2i(x,y)],
+#   }
+# }
+#
+# areas_tile_to_area_id
+var areas = {}
+var areas_tile_to_area = {}
 
 # assume a TileMap called 'base' always exists
 func get_base():
@@ -141,23 +154,52 @@ func nodes_from_tiles(create: bool):
 
 func nodes_created():
 	pass
+	
+func _on_tile_entered(t, who): 
+	# TODO: create a map of tile to hidden areas.
+	# TODO: ok, this works but only one cell
+	#   - need to quickly map a t -> area where are is the area id
+	#   - need to map area -> list of tiles that belong to that area
+	#   - then I can make visible all tiles in this area.
+	if areas_tile_to_area.has(t):
+		var area = areas_tile_to_area[t]
+		if not areas[area]['visible']:
+			areas_toggle_visibility(area)
+			
+func areas_init():
+	# TODO: fade-in?  replace tile with one that has a shader.  This shader can increase visibility.
+	for t in $areas.get_used_cells():
+		var tiledata = $areas.get_cell_tile_data(t)
+		var area = tiledata.get_custom_data("id")
+		if not areas.has(area):
+			print("area %d discovered" % area)
+			areas[area] = {
+				'visible' : true,
+				'tiles' : []
+			}
+		areas[area]['tiles'].append(t)
+		areas_tile_to_area[t] = area
 
+	for area in areas:
+		areas_toggle_visibility(area)
+		
+func areas_toggle_visibility(area):
+	if not areas.has(area):
+		return
+	var was_visible = areas[area]['visible']
+	var now_visible = not was_visible
+	areas[area]['visible'] = now_visible
+	print("area %d visible change" % area)
+	for t in areas[area]['tiles']:
+		if now_visible:
+			$visibility.erase_cell(t)
+		else:
+			$visibility.set_cell(t, 1, Vector2i(0, 0))
+		
 func _ready():
-	var hide_areas = true
-	if hide_areas:
-		# hide areas
-		# TODO: store
-		# TODO: hide/store all layers
-		# TODO: restore
-		# TODO: fade-in?  replace tile with one that has a shader.  This shader can increase visibility.
-		for t in $areas.get_used_cells():
-			print(t)
-			var sourceid = $areas.get_cell_source_id(t)
-			var tiledata = $areas.get_cell_tile_data(t)
-			var id = tiledata.get_custom_data("id")
-			if id == 1:
-				$base.set_cell(t, $base.get_cell_source_id(t), Vector2i(0, 0), 0)
-				pass
+	EventBus.connect("tile_entered", Callable(self, "_on_tile_entered"))
+	#EventBus.connect("tile_entered", Callable(self, "on_turn"))
+	areas_init()
 	
 func astar_debug():
 	if astar_debug_enable:
