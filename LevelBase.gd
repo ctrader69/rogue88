@@ -165,7 +165,8 @@ func _on_tile_entered(t, who):
 		var area = areas_tile_to_area[t]
 		if not areas[area]['visible']:
 			areas_toggle_visibility(area)
-			
+
+# areas_ todo: an object in an area is making the whole are visible ... why
 func areas_init():
 	# TODO: fade-in?  replace tile with one that has a shader.  This shader can increase visibility.
 	for t in $areas.get_used_cells():
