@@ -83,7 +83,6 @@ centered = false
 stream = ExtResource("5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("6")]
 

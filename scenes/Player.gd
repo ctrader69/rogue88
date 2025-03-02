@@ -18,6 +18,7 @@ var weapon = null
 var actions = []
 
 # static references
+@onready var game = get_node("/root/game")
 @onready var camera : Camera2D = get_node("/root/game/Camera3D")
 @onready var sfx = get_node("/root/game/Sfx")
 @onready var Items = get_node("/root/Items")
@@ -25,7 +26,6 @@ var actions = []
 # child references
 @onready var inventory = $CanvasLayer/Inventory
 
-	
 func _ready():
 	position = Vector2(1, 1) * TILESIZE
 	$Gfx/Torso/AnimationPlayer.play("heave")
@@ -218,12 +218,25 @@ func _unhandled_input(event):
 		for n in level.get_nodes_at_tile('obj', t):
 			if n:
 				n.event(Event.make(Event.INTERACT, self))
+				
+		# this is a demo of actions dialog; generalize me
 		for dir in DIRS:
 			for n in level.get_nodes_at_tile('obj', t + dir):
 				if not n:
 					continue
 				else:
-					print(n)
+					if n.gametype == 'bookshelf':
+						var scene = preload("res://scenes/ActionsDialog/ActionsDialog.tscn").instantiate()
+						scene.init(["hide", "search"])
+						get_node("/root/game/CanvasLayer2").add_child(scene)
+						get_viewport().set_input_as_handled()
+						return
+
+		for dir in DIRS:
+			for n in level.get_nodes_at_tile('obj', t + dir):
+				if not n:
+					continue
+				else:
 					n.event(Event.make(Event.INTERACT, self))
 					turn()
 		get_viewport().set_input_as_handled()

@@ -266,7 +266,6 @@ anchor_mode = 0
 position_smoothing_speed = 0.25
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
-layer = 0
 
 [node name="Cursor" type="Node2D" parent="CanvasLayer2"]
 
