@@ -24,7 +24,6 @@ layout_mode = 2
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("4")
-region_rect = Rect2(0, 0, 9, 9)
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3

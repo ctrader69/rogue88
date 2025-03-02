@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://bge6tyxnlikq0"]
+
+[ext_resource type="Script" path="res://scenes/ActionsDialog/actions_dialog.gd" id="1_xynbd"]
+[ext_resource type="Texture2D" uid="uid://xqhngxbffxak" path="res://assets/images/scenes/ActionsDialog/border.png" id="2_weexd"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xynbd")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer2/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_weexd")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/MarginContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
