@@ -10,6 +10,7 @@ const HIGHLIGHT_COLOR = Color(0.0, 1.0, 0.0, 1.0)
 const HIGHLIGHT_SHADOW_COLOR = Color(0.0, 0.5, 0.0, 1.0)
 
 func _ready() -> void:
+	grab_focus()
 	if unit_test:
 		selections['list'] = ["LISA", "HAS", "CHIGGERS"]
 		for selection in selections['list']:
@@ -48,27 +49,22 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_w"):
 		# going up the list
 		var index = selections['list'].find(current)
-		if index == 0:
-			return
-		index -= 1
-		select(selections['list'][index])
-		accept_event()
+		if index != 0:
+			index -= 1
+			select(selections['list'][index])
 	elif event.is_action_pressed("ui_s"):
 		# going down the list
 		var index = selections['list'].find(current)
-		if index == (selections['list'].size() - 1):
-			return
-		index += 1
-		select(selections['list'][index])
-		accept_event()
-	if event.is_action_pressed("cancel"):
+		if index != (selections['list'].size() - 1):
+			index += 1
+			select(selections['list'][index])
+	elif event.is_action_pressed("cancel"):
 		queue_free()
-		accept_event()
-	if event.is_action_pressed("interact"):
+	elif event.is_action_pressed("interact"):
 		print("selection: %s" % current)
 		queue_free()
-		accept_event()
 	
+	accept_event()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
