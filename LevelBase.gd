@@ -180,7 +180,6 @@ func areas_init():
 			}
 		areas[area]['tiles'].append(t)
 		areas_tile_to_area[t] = area
-
 	for area in areas:
 		areas_toggle_visibility(area)
 		

@@ -260,11 +260,7 @@ func _unhandled_input(event):
 		inventory.toggle()
 		get_viewport().set_input_as_handled()
 	elif "info" in actions and event.is_action_pressed("info"):
-		
-		if player_status.visible:
-			player_status.visible = false
-		else:
-			player_status.visible = true
+		player_status.toggle()
 		get_viewport().set_input_as_handled()
 	elif "fire" in actions and event.is_action_pressed("fire"):
 		if weapon:

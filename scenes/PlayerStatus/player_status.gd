@@ -5,7 +5,6 @@ var next_index = 0
 # TODO: food (stomach)
 # TODO: pee (puddle?)
 # TODO: cool/mojo (sunglasses?)
-# TODO: get bar animation working again
 # TODO: animate ratio
 # TODO: update bar and ratio
 # TODO: scrollbar or arrows
@@ -14,11 +13,13 @@ var next_index = 0
 var data = {
 	'health' : {
 		'icon' : preload("res://scenes/Status/HealthIcon/health_icon.tscn"),
+		'bar' : null,
 		'bar-content' : preload("res://assets/images/scenes/StatBar1/content-health.png"),
 		'index' : -1
 	},
 	'poo' : {
 		'icon' : preload("res://scenes/Status/PooIcon/poo_icon.tscn"),
+		'bar' : null,
 		'bar-content' : preload("res://assets/images/scenes/StatBar1/content-poo.png"),
 		'index' : -1
 	}
@@ -43,8 +44,18 @@ func add(type):
 	#ratio.bottom = 100
 	grid.add_child(ratio)
 	
+	data[type]['bar'] = bar
 	data[type]['index'] = next_index
 	next_index += 1
+
+func toggle():
+	if visible:
+		visible = false
+	else:
+		for key in data:
+			if data[key]['bar']:
+				data[key]['bar'].animate()
+		visible = true
 
 func _ready() -> void:
 	add('health')
