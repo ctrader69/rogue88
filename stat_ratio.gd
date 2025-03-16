@@ -1,13 +1,29 @@
 extends Control
 
-#export var top = 20
-#export var bottom = 100
+const SPEED = 1
 
-# Called when the node enters the scene tree for the first time.
+@export var numerator = 20
+@export var denominator = 20
+
+var display_numerator = 0
+
+func update_label(numerator):
+	$Label.text = str(numerator) + "/" + str(denominator)
+
+func update(numerator, denominator):
+	self.numerator = numerator
+	self.denominator = denominator
+	animate()
+	
+func animate():
+	display_numerator = 0
+	var tw = create_tween()
+	tw.set_trans(Tween.TRANS_QUINT)
+	tw.set_ease(Tween.EASE_OUT)
+	tw.tween_method(update_label.bind(), 0, numerator, SPEED)
+	
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	update(numerator, denominator)
+	
 func _process(delta: float) -> void:
 	pass

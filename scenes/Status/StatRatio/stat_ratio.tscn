@@ -16,4 +16,4 @@ layout_mode = 0
 offset_right = 24.0
 offset_bottom = 5.0
 theme = ExtResource("2_pxjya")
-text = "20/100"
+text = "error"
