@@ -8,7 +8,6 @@ var next_index = 0
 # TODO: get bar animation working again
 # TODO: animate ratio
 # TODO: update bar and ratio
-# TODO: hook into game (f1?)
 # TODO: scrollbar or arrows
 # TODO: search (if we get too many)
 
