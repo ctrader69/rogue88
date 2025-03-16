@@ -22,6 +22,7 @@ var actions = []
 @onready var camera : Camera2D = get_node("/root/game/Camera3D")
 @onready var sfx = get_node("/root/game/Sfx")
 @onready var Items = get_node("/root/Items")
+@onready var player_status = get_node("/root/game/CanvasLayer2/PlayerStatus")
 
 # child references
 @onready var inventory = $CanvasLayer/Inventory
@@ -66,6 +67,7 @@ func set_level(level, spawn):
 		actions = [
 			'fire',
 			'get',
+			'info',
 			'interact',
 			'inventory',
 			'ui_w',
@@ -256,6 +258,13 @@ func _unhandled_input(event):
 		get_viewport().set_input_as_handled()
 	elif "inventory" in actions and event.is_action_pressed("inventory"):
 		inventory.toggle()
+		get_viewport().set_input_as_handled()
+	elif "info" in actions and event.is_action_pressed("info"):
+		
+		if player_status.visible:
+			player_status.visible = false
+		else:
+			player_status.visible = true
 		get_viewport().set_input_as_handled()
 	elif "fire" in actions and event.is_action_pressed("fire"):
 		if weapon:

@@ -43,12 +43,14 @@ var dungeon = {
 var level_name = ''
 var level = null
 var level_last = {}
+@onready var player_status = $CanvasLayer2/PlayerStatus
 
 func _ready():
 	randomize()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Ambient.play()
 	level_change('level-2', null)
+	player_status.visible = false
 
 func _process(delta):
 	$CanvasLayer2/Cursor/Sprite2D.position = get_global_mouse_position() - get_node("/root/game/Camera3D").position

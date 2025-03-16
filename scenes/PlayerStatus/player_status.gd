@@ -2,6 +2,16 @@ extends Control
 
 var next_index = 0
 
+# TODO: food (stomach)
+# TODO: pee (puddle?)
+# TODO: cool/mojo (sunglasses?)
+# TODO: get bar animation working again
+# TODO: animate ratio
+# TODO: update bar and ratio
+# TODO: hook into game (f1?)
+# TODO: scrollbar or arrows
+# TODO: search (if we get too many)
+
 var data = {
 	'health' : {
 		'icon' : preload("res://scenes/Status/HealthIcon/health_icon.tscn"),
@@ -15,7 +25,7 @@ var data = {
 	}
 }
 
-@onready var grid = $CanvasLayer/MarginContainer/GridContainer
+@onready var grid = $MarginContainer/GridContainer
 
 func add(type):
 	if not type in data:
