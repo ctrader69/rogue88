@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://36cwewtajawn" path="res://assets/images/scenes/StatBar1/content.png" id="5"]
 
 [node name="StatBar1" type="Control"]
+custom_minimum_size = Vector2(64, 8)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("4")

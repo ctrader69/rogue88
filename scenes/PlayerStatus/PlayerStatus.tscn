@@ -1,13 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4fwdm2xu3qh0"]
+[gd_scene load_steps=2 format=3 uid="uid://c4fwdm2xu3qh0"]
 
-[ext_resource type="PackedScene" uid="uid://fijrhgikfn28" path="res://scenes/Status/HealthIcon/health_icon.tscn" id="1_psmxk"]
-[ext_resource type="PackedScene" uid="uid://dbdd3k61gotwk" path="res://scenes/StatBar1/StatBar1.tscn" id="2_mb8ww"]
-[ext_resource type="PackedScene" uid="uid://bi82b585yca16" path="res://scenes/Status/StatRatio/stat_ratio.tscn" id="3_2rhxl"]
-[ext_resource type="PackedScene" uid="uid://d3311ngdv71ja" path="res://scenes/Status/PooIcon/poo_icon.tscn" id="4_6tjyc"]
+[ext_resource type="Script" path="res://scenes/PlayerStatus/player_status.gd" id="1_73akn"]
 
 [node name="PlayerStatus" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_73akn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -20,24 +18,3 @@ layout_mode = 2
 theme_override_constants/h_separation = 1
 theme_override_constants/v_separation = 1
 columns = 3
-
-[node name="HealthIcon" parent="CanvasLayer/MarginContainer/GridContainer" instance=ExtResource("1_psmxk")]
-layout_mode = 2
-
-[node name="StatBar1" parent="CanvasLayer/MarginContainer/GridContainer" instance=ExtResource("2_mb8ww")]
-clip_contents = true
-custom_minimum_size = Vector2(64, 8)
-layout_mode = 2
-
-[node name="StatRatio" parent="CanvasLayer/MarginContainer/GridContainer" instance=ExtResource("3_2rhxl")]
-layout_mode = 2
-
-[node name="PooIcon" parent="CanvasLayer/MarginContainer/GridContainer" instance=ExtResource("4_6tjyc")]
-layout_mode = 2
-
-[node name="StatBar2" parent="CanvasLayer/MarginContainer/GridContainer" instance=ExtResource("2_mb8ww")]
-layout_mode = 2
-fill = "res://assets/images/scenes/StatBar1/content-poo.png"
-
-[node name="StatRatio2" parent="CanvasLayer/MarginContainer/GridContainer" instance=ExtResource("3_2rhxl")]
-layout_mode = 2

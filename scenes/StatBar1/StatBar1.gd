@@ -5,7 +5,7 @@ const SPEED = 1
 @export var height : int = 8
 @export var width : int = 64
 @export var percent : int = 0
-@export var fill = "res://assets/images/scenes/StatBar1/content.png"
+@export var fill = preload("res://assets/images/scenes/StatBar1/content.png")
 
 @onready var container = $MarginContainer/HBoxContainer/MarginContainer/Container
 @onready var content = $MarginContainer/HBoxContainer/MarginContainer/MarginContainer/Content
@@ -16,7 +16,7 @@ func _ready():
 	container.custom_minimum_size = Vector2(width, height)
 	content.size = Vector2(0, height - 2)
 	percent_set(100, true)
-	content.texture = load(fill)
+	content.texture = fill
 	
 func percent_set(percent : int, animate : bool):
 	self.percent = percent
