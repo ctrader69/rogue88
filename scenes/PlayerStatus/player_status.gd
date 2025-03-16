@@ -5,21 +5,16 @@ var next_index = 0
 # TODO: food (stomach)
 # TODO: pee (puddle?)
 # TODO: cool/mojo (sunglasses?)
+# TODO: animate poo (flies)
 
 var data = {
 	'health' : {
 		'icon' : preload("res://scenes/Status/HealthIcon/health_icon.tscn"),
 		'bar-content' : preload("res://assets/images/scenes/StatBar1/content-health.png"),
-		'index' : -1,
-		'bar' : null,
-		'ratio' : null,
 	},
 	'poo' : {
 		'icon' : preload("res://scenes/Status/PooIcon/poo_icon.tscn"),
 		'bar-content' : preload("res://assets/images/scenes/StatBar1/content-poo.png"),
-		'index' : -1,
-		'bar' : null,
-		'ratio' : null,
 	}
 }
 
@@ -68,6 +63,10 @@ func toggle():
 		visible = true
 
 func _ready() -> void:
+	for key in data:
+		data[key]['index'] = -1
+		data[key]['bar'] = null
+		data[key]['ratio'] = null
 	add('health', 20, 20)
 	add('poo', 1, 20)
 
