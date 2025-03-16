@@ -3,6 +3,7 @@ extends Node2D
 @onready var level = get_parent()
 @onready var Event = get_node("/root/Events")
 @onready var Util = get_node("/root/Utils")
+@onready var text_layer = get_node("/root/game/CanvasLayer2")
 
 var hp = 25
 var gametype = 'door'
@@ -98,7 +99,7 @@ func event(e):
 			var damage = -1
 			hp += -1
 			# TODO: this is repeated, perhaps have a damage 'component'
-			add_child(preload("res://scenes/HeadLabel/HeadLabel.tscn").instantiate().init(str(damage), Vector2(0, -4), Color('#ff004d'), Color('#7e2553')))
+			text_layer.add_child(preload("res://scenes/HeadLabel/HeadLabel.tscn").instantiate().init(str(damage), position + Vector2(0, -4), Color('#ff004d'), Color('#7e2553')))
 			$DoorHit.play()
 			if hp <= 0:
 				busted = true

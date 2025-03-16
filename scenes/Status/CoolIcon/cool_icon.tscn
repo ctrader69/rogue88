@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbv4kn4hhwait"]
+
+[ext_resource type="Texture2D" uid="uid://pgjmra887st7" path="res://assets/images/scenes/PlayerStats/cool.png" id="1_ghpam"]
+
+[node name="CoolIcon" type="Control"]
+custom_minimum_size = Vector2(9, 9)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ghpam")
+centered = false

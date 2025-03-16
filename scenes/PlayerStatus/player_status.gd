@@ -7,7 +7,18 @@ var next_index = 0
 # TODO: cool/mojo (sunglasses?)
 # TODO: animate poo (flies)
 
+# How to add
+#
+# 1) create an 'icon' scene.  Use an existing one as a guide.  It should be 8x8.
+# 2) create a 'content' png file to use as the filling of the bar.
+# 3) connect these in the table below (alphabetical please).
+# 4) if your stat should exist at the beginning of a game, add a call to add() in _ready()
+
 var data = {
+	'cool' : {
+		'icon' : preload("res://scenes/Status/CoolIcon/cool_icon.tscn"),
+		'bar-content' : preload("res://assets/images/scenes/StatBar1/content-cool.png"),
+	},
 	'health' : {
 		'icon' : preload("res://scenes/Status/HealthIcon/health_icon.tscn"),
 		'bar-content' : preload("res://assets/images/scenes/StatBar1/content-health.png"),
@@ -68,6 +79,7 @@ func _ready() -> void:
 		data[key]['bar'] = null
 		data[key]['ratio'] = null
 	add('health', 20, 20)
+	add('cool', 10, 10)
 	add('poo', 1, 20)
 
 func _process(delta: float) -> void:
