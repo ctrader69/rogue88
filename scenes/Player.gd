@@ -220,6 +220,11 @@ func _unhandled_input(event):
 				n.event(Event.make(Event.INTERACT, self))
 				
 		# this is a demo of actions dialog; generalize me
+		# I think we will need:
+		#   - query adjacent object for interactions
+		#   - build a list of actions, qualify with direction (if required)
+		#   - build the events and extract the strings?
+		#   - 
 		for dir in DIRS:
 			for n in level.get_nodes_at_tile('obj', t + dir):
 				if not n:
@@ -231,7 +236,7 @@ func _unhandled_input(event):
 						get_node("/root/game/CanvasLayer2").add_child(scene)
 						get_viewport().set_input_as_handled()
 						return
-
+						
 		for dir in DIRS:
 			for n in level.get_nodes_at_tile('obj', t + dir):
 				if not n:

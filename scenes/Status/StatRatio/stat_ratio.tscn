@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi82b585yca16"]
+
+[ext_resource type="Script" path="res://stat_ratio.gd" id="1_y2msa"]
+[ext_resource type="Theme" uid="uid://cbetji2bt550i" path="res://tiny-theme.tres" id="2_pxjya"]
+
+[node name="StatRatio" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_y2msa")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(20, 8)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("2_pxjya")
+text = "20/100"

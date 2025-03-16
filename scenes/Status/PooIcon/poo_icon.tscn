@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3311ngdv71ja"]
+
+[ext_resource type="Texture2D" uid="uid://cfkvoifg1dgk8" path="res://assets/images/scenes/PooIcon/poo.png" id="1_q3q4d"]
+
+[node name="PooIcon" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q3q4d")
+centered = false

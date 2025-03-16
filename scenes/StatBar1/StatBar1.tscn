@@ -4,25 +4,41 @@
 [ext_resource type="Script" path="res://scenes/StatBar1/StatBar1.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://36cwewtajawn" path="res://assets/images/scenes/StatBar1/content.png" id="5"]
 
-[node name="StatBar1" type="Node2D"]
+[node name="StatBar1" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("4")
 percent = 100
 
-[node name="Content" type="NinePatchRect" parent="."]
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 39.0
-offset_bottom = 4.0
-texture = ExtResource("5")
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 8.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Container" type="NinePatchRect" parent="MarginContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(64, 8)
+layout_mode = 2
+texture = ExtResource("1")
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 
-[node name="Container" type="NinePatchRect" parent="."]
-offset_right = 40.0
-offset_bottom = 5.0
-texture = ExtResource("1")
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(48, 8)
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+
+[node name="Content" type="NinePatchRect" parent="MarginContainer/HBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("5")
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1

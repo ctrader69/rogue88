@@ -37,7 +37,6 @@ position = Vector2(3, 0.5)
 texture = ExtResource("3")
 centered = false
 hframes = 10
-frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Heart"]
 libraries = {
