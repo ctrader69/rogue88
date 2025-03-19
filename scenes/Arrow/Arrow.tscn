@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7yb67xqos0q5"]
+[gd_scene load_steps=9 format=3 uid="uid://c7yb67xqos0q5"]
 
 [ext_resource type="Script" path="res://scenes/Arrow/Arrow.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://caje7eyersooj" path="res://assets/arrows.png" id="2_58xxi"]
 [ext_resource type="AudioStream" uid="uid://cmx7v3ipceqlr" path="res://assets/images/scenes/Arrow/arrow.ogg" id="3"]
+[ext_resource type="Texture2D" uid="uid://fli1q2flkri1" path="res://assets/images/player-light.png" id="4_6kr11"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(2.48984, 0.505852)
@@ -54,3 +55,8 @@ shape = SubResource("3")
 
 [node name="ReleaseSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0, 0, 1)
+texture = ExtResource("4_6kr11")
+texture_scale = 0.2

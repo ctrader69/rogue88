@@ -4,6 +4,7 @@ extends Node2D
 
 var gametype = "bow-wooden"
 var ammo = null
+var infinite = true
 
 func _ready():
 	pass
@@ -25,7 +26,7 @@ func set_facing(v):
 		self.scale.x = 1
 	
 func fire():
-	if not ammo:
+	if not ammo and not infinite:
 		return false
 	# TODO: arrow count
 	# TODO: weapon attachment point
