@@ -57,6 +57,7 @@ shape = SubResource("3")
 stream = ExtResource("3")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(1, 0, 0, 1)
+color = Color(1, 0.501961, 0, 1)
+shadow_enabled = true
 texture = ExtResource("4_6kr11")
 texture_scale = 0.2
