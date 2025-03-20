@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://r36d4jset6u8"]
+[gd_scene load_steps=7 format=3 uid="uid://r36d4jset6u8"]
 
 [ext_resource type="Script" path="res://scenes/InventoryItem.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://6ojb0frdrqia" path="res://assets/items/bow-wooden-inventory.png" id="2_ufb87"]
 [ext_resource type="FontFile" uid="uid://b1owmvnwyuglw" path="res://assets/images/Fonts/pico8font.png" id="2_yhddt"]
+[ext_resource type="Theme" uid="uid://cbetji2bt550i" path="res://tiny-theme.tres" id="3_ebaad"]
 
 [sub_resource type="Shader" id="2"]
 code = "shader_type canvas_item;
@@ -70,8 +71,8 @@ offset_top = 5.0
 offset_right = 45.0
 offset_bottom = 19.0
 scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_ebaad")
 theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_fonts/font = ExtResource("2_yhddt")
 text = "1"
 
 [node name="Equipped" type="Label" parent="Sprite2D"]

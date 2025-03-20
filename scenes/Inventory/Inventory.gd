@@ -110,13 +110,12 @@ func _unhandled_input(event):
 				var inventory_item = items[selection]['InventoryItem']
 				var item = items[selection]['Item']
 				actor.equip(item)
-				# TODO: this is broken
-				#if item.equipped:
-					#if actor.unequip(item):
-						#item.toggle_equipped()
-				#else:
-					#if actor.equip(item):
-						#item.toggle_equipped()
+				if inventory_item.equipped:
+					if actor.unequip(item):
+						inventory_item.toggle_equipped()
+				else:
+					if actor.equip(item):
+						inventory_item.toggle_equipped()
 		if event.is_action_pressed('drop'):
 			if selection in items:
 				var inventory_item = items[selection]['InventoryItem']
