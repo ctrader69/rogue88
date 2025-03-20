@@ -23,17 +23,18 @@ func _ready():
 	
 func init(d : Dictionary):
 	container = preload("res://scenes/Container/container.tscn").instantiate()
+	container.init()
 	position = d['position']
-	if d.has('items'):
-		for item in d['items']:
-			# item format example:
-			#
-			# [BOW, {'type' : 'wooden', 'effects' : [], ...}]
-			var objid = item[0]
-			if OBJ.DATA.has(objid):
-				var n = OBJ.DATA[objid].scene.instantiate()
-				var initdata = OBJ.DATA[objid].init
-				initdata.merge(item[1])
+	if 'contents' in d:
+		for item in d['contents']:
+			# TODO: bow-wooden -> bow
+			# e.g. {'gametype' : 'bow', 'initdata' : {}}
+			var gt = item['gametype']
+			if gt in OBJ.DATA:
+				var n = OBJ.DATA[gt].scene.instantiate()
+				var initdata = OBJ.DATA[gt].init
+				# TODO: not working
+				# initdata.merge(item[initdata])
 				n.init(initdata)
 				container.add(n)
 

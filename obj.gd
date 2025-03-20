@@ -10,6 +10,12 @@ var DATA = {
 		'scene'    : preload("res://scenes/Item/Item.tscn"),
 		'solid'    : false,
 	},
+	'bow' : {
+		'init'     : {},
+		'pushable' : false,
+		'scene'    : preload("res://scenes/Weapons/Bow/bow.tscn"),
+		'solid'    : false,
+	},
 	'bow-wooden' : {
 		'init'     : {},
 		'pushable' : false,

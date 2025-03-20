@@ -3,16 +3,24 @@ extends Node2D
 @export var columns : int
 @export var slot_size : int = 10
 
-@onready var base = $NinePatchRect
-@onready var grid = $MarginContainer/MarginContainer/VBoxContainer/GridContainer
+var grid = null
+var slots = {}
+var contents = {}
 
 func _ready():
+	pass
+	
+func init():
+	grid = get_node("./MarginContainer/MarginContainer/VBoxContainer/GridContainer")
 	grid.columns = columns
 	for row in rows:
 		for col in columns:
-			var n = preload("res://scenes/Container/container_slot.tscn").instantiate()
-			n.set_owner(grid)
-			grid.add_child(n)
+			var i = Vector2i(row, col)
+			var slot = preload("res://scenes/Container/container_slot.tscn").instantiate()
+			slots[i] = slot
+			contents[i] = null
+			slot.set_owner(grid)
+			grid.add_child(slot)
 			
 func _process(delta):
 	$Cursor.position = get_global_mouse_position()
@@ -34,4 +42,19 @@ func _on_check_button_button_pressed():
 	queue_free()
 		
 func add(n):
-	pass
+	for row in rows:
+		for col in columns:
+			var i = Vector2i(row, col)
+			if contents[i] == null:
+				contents[i] = n
+				# TODO: move this to the object itself?
+				var inventory_item = preload('res://scenes/InventoryItem.tscn').instantiate()
+				var data = Items.ITEMS[n.gametype]
+				data['equipped'] = false
+				data['count'] = 1
+				inventory_item.init(data)
+				var slot = slots[i]
+				inventory_item.set_owner(slot)
+				slot.add(inventory_item)
+				return true
+	return false

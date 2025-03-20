@@ -19,3 +19,11 @@ func _on_gui_input(event):
 				deselect()
 			else:
 				select()
+
+func add(item):
+	add_child(item)
+	item.set_owner(self)
+	
+func remove(item):
+	remove_child(item)
+	item.set_owner(null)

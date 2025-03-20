@@ -26,6 +26,8 @@ var astar_debug_node = null
 var areas = {}
 var areas_tile_to_area = {}
 
+# mapdata - store context specific data, currently only used by obj layer
+
 # assume a TileMap called 'base' always exists
 func get_base():
 	return $base
@@ -42,6 +44,7 @@ var nodes = {
 	'obj' : {
 	},
 }
+
 var mapdata = {}
 
 func world_to_tile(w: Vector2):
