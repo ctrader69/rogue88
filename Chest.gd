@@ -53,27 +53,19 @@ func state_set(new_state):
 		$ChestClose.play()
 		$Sprite2D.frame = 0
 	elif state == 'open':
-		game.add_child(container)
-		container.set_owner(game)
-		if nabbed:
-			$Sprite2D.frame = 1
-			$ChestOpen.play()
-		else:
-			$Sprite2D.frame = 2
-			$ChestSuccess.play()
+		$Sprite2D.frame = 2
+		$ChestSuccess.play()
 	
 func event(e):
 	match e['type']:
+		Event.GET:
+			if state == 'open':
+				container.search(e['src'], get_node("/root/game/CanvasLayer2"))
 		Event.INTERACT:
 			if state == 'closed':
 				event(Event.make(Event.OPEN, e['src']))
 			elif state == 'open':
-				if nabbed:
-					event(Event.make(Event.CLOSE, e['src']))
-				else:
-					nabbed = true
-					$Sprite2D.frame = 1
-					$Nabbed.play()
+				event(Event.make(Event.CLOSE, e['src']))
 		Event.OPEN:
 			state_set('open')
 		Event.CLOSE:

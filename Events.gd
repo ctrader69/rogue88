@@ -8,6 +8,7 @@ enum {
 	EQUIPPED,
 	IGNITE,
 	INTERACT,
+	GET,
 	LOAD,
 	OPEN,
 	TAKEN,

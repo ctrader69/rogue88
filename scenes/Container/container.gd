@@ -6,6 +6,8 @@ extends Node2D
 var grid = null
 var slots = {}
 var contents = {}
+var items = {}
+var actor = null
 
 func _ready():
 	pass
@@ -39,7 +41,20 @@ func _on_all_button_button_pressed():
 			n.select()
 		
 func _on_check_button_button_pressed():
-	queue_free()
+	for row in rows:
+		for col in columns:
+			var i = Vector2i(row, col)
+			var slot = slots[i]
+			if slot.selected:
+				slot.deselect()
+				if contents[i] == null:
+					continue
+				slot.remove(items[i])
+				actor.add_item(contents[i])
+				items[i] = null
+	get_owner().remove_child(self)
+	set_owner(null)
+	actor = null
 		
 func add(n):
 	for row in rows:
@@ -56,5 +71,11 @@ func add(n):
 				var slot = slots[i]
 				inventory_item.set_owner(slot)
 				slot.add(inventory_item)
+				items[i] = inventory_item
 				return true
 	return false
+	
+func search(actor, parent):
+	self.actor = actor
+	parent.add_child(self)
+	set_owner(parent)
