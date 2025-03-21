@@ -1,7 +1,5 @@
 extends Node2D
 
-@onready var Event = get_node("/root/Events")
-
 var gametype = "bow-wooden"
 var ammo = null
 var infinite = true
@@ -41,6 +39,8 @@ func fire():
 	n.set_owner(parent)
 	return true
 	
+# TODO: need to add this to the scene tree.
+
 func equip(n):
 	ammo = n
 	return true
@@ -63,6 +63,8 @@ func event(e):
 		visible = false
 		position = Vector2i(0, 0)
 	elif e['type'] == Events.EQUIPPED:
+		e['src'].add_child(self)
+		set_owner(e['src'])
 		visible = true
 		$Gfx/Sprite.frame = 1
 		# TODO: how to signal that the ammo gets unequipped too

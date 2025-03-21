@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var gametype = 'arrow'
-const SPEED = 128
+const SPEED = 256
 var v : Vector2
 
 func unit_test():
