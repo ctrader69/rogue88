@@ -55,17 +55,17 @@ func is_solid():
 	return false
 	
 func event(e):
-	if e['type'] == Event.DROPPED:
+	if e['type'] == Events.DROPPED:
 		visible = true
 		$Gfx/Sprite.frame = 0
 		position = e['position']
-	elif e['type'] == Event.TAKEN:
+	elif e['type'] == Events.TAKEN:
 		visible = false
 		position = Vector2i(0, 0)
-	elif e['type'] == Event.EQUIPPED:
+	elif e['type'] == Events.EQUIPPED:
 		visible = true
 		$Gfx/Sprite.frame = 1
 		# TODO: how to signal that the ammo gets unequipped too
-	elif e['type'] == Event.UNEQUIPPED:
+	elif e['type'] == Events.UNEQUIPPED:
 		visible = false
 		$Gfx/Sprite.frame = 1
