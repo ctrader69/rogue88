@@ -1,20 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://dpyer4qpjsyon"]
 
-[ext_resource path="res://assets/fonts/m5x7.ttf" type="FontFile" id=1]
-
-[sub_resource type="FontFile" id=1]
-size = 4
-outline_size = 1
-outline_color = Color( 0.36, 0, 0.294, 1 )
-use_mipmaps = true
-font_data = ExtResource( 1 )
+[ext_resource type="Script" path="res://scenes/speech.gd" id="1_vvatt"]
+[ext_resource type="Theme" uid="uid://cbetji2bt550i" path="res://tiny-theme.tres" id="2_nv5yx"]
 
 [node name="Speech" type="Node2D"]
-z_index = 1
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_vvatt")
 
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 14.0
-theme_override_colors/font_color = Color( 0.47451, 1, 0.580392, 1 )
-theme_override_fonts/font = SubResource( 1 )
+offset_right = 24.0
+offset_bottom = 5.0
+theme = ExtResource("2_nv5yx")
+theme_override_colors/font_color = Color(0.47451, 1, 0.580392, 1)
 text = "Sloane"
