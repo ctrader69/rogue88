@@ -34,6 +34,7 @@ OBJ="*res://obj.gd"
 window/size/viewport_width=896
 window/size/viewport_height=896
 window/size/resizable=false
+window/stretch/mode="canvas_items"
 window/stretch/scale=7.0
 
 [global]
@@ -161,5 +162,4 @@ common/enable_pause_aware_picking=true
 
 textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0.305882, 0.305882, 0.305882, 1)
-2d/snap/snap_2d_vertices_to_pixel=true
 environment/defaults/default_environment="res://default_env.tres"

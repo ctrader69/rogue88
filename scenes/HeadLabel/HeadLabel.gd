@@ -15,7 +15,6 @@ func _ready():
 	tw.connect('finished', Callable(self, 'finished'))
 	
 func init(text, position, textcolor, shadowcolor):
-	self.scale = Vector2(1, 1)
 	self.position = position
 	$Label.text = text
 	$Label.set('theme_override_colors/font_color', textcolor)
