@@ -1,5 +1,9 @@
 extends Node2D
 
+# TODO: automate wrapping
+# TODO: support color
+# TODO: support multiple sentences (no fade in between)
+
 const WRITE_DURATION = 0.25
 const FADE_DURATION = 2.0
 @export var text = 'default-text'
@@ -30,8 +34,3 @@ func _ready():
 		
 func update_text(i):
 	$Label.text = text.substr(0, int(i))
-		
-func _process(delta):
-	# scroll/fade text
-	pass
-		
