@@ -3,8 +3,9 @@ extends Node2D
 # TODO: automate wrapping
 # TODO: support color
 # TODO: support multiple sentences (no fade in between)
+# TODO: perhaps speech duration should be text length dependent
 
-const WRITE_DURATION = 0.25
+const WRITE_DURATION = 0.5
 const FADE_DURATION = 2.0
 @export var text = 'default-text'
 var state = 'writing'
