@@ -2,7 +2,6 @@ extends Control
 
 var next_index = 0
 
-# TODO: food (stomach)
 # TODO: pee (puddle?)
 # TODO: cool/mojo (sunglasses?)
 # TODO: animate poo (flies)
@@ -18,6 +17,10 @@ var data = {
 	'cool' : {
 		'icon' : preload("res://scenes/Status/CoolIcon/cool_icon.tscn"),
 		'bar-content' : preload("res://assets/images/scenes/StatBar1/content-cool.png"),
+	},
+	'food' : {
+		'icon' : preload("res://scenes/Status/FoodIcon/food_icon.tscn"),
+		'bar-content' : preload("res://assets/images/scenes/StatBar1/content-food.png"),
 	},
 	'health' : {
 		'icon' : preload("res://scenes/Status/HealthIcon/health_icon.tscn"),
@@ -80,6 +83,7 @@ func _ready() -> void:
 		data[key]['ratio'] = null
 	add('health', 20, 20)
 	add('cool', 10, 10)
+	add('food', 0, 20)
 	add('poo', 1, 20)
 
 func _process(delta: float) -> void:

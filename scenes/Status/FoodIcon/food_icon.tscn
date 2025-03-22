@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://brl8q7mh6c7d3"]
+
+[ext_resource type="Texture2D" uid="uid://sus2d5emvrh5" path="res://assets/images/scenes/PlayerStats/stomach.png" id="1_40q2e"]
+
+[node name="FoodIcon" type="Control"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_40q2e")
+centered = false
