@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://m46boh7wcj22" path="res://assets/weapons.png" id="3_p2nyd"]
 [ext_resource type="AudioStream" uid="uid://c0ig45x4hbtpa" path="res://assets/sounds/bump.wav" id="5"]
 [ext_resource type="Texture2D" uid="uid://cibecanelc4lr" path="res://assets/shadow-hero.png" id="5_12bm7"]
-[ext_resource type="PackedScene" uid="uid://5lndbfyw8508" path="res://scenes/Inventory/Inventory.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://5lndbfyw8508" path="res://assets/scenes/Inventory/Inventory.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://Wound.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://c0rhud8k0e8oj" path="res://scenes/FlickeringLightSource/flickering_light_source.tscn" id="9_7xhue"]
 

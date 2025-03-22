@@ -23,6 +23,7 @@ var actions = []
 @onready var sfx = get_node("/root/game/Sfx")
 @onready var Items = get_node("/root/Items")
 @onready var player_status = get_node("/root/game/CanvasLayer2/PlayerStatus")
+@onready var gui_layer = get_node("/root/game/CanvasLayer2")
 
 # child references
 @onready var inventory = $CanvasLayer/Inventory
@@ -190,6 +191,13 @@ func move_into_node(t, n, dir):
 func _process(delta):
 	pass
 	
+func say(text):
+	var n = preload("res://scenes/Speech.tscn").instantiate()
+	n.position = position
+	n.init({'text' : text})
+	gui_layer.add_child(n)
+	n.set_owner(gui_layer)
+	
 func turn():
 	EventBus.emit_signal("player_turn")
 	
@@ -248,13 +256,22 @@ func _unhandled_input(event):
 					turn()
 		get_viewport().set_input_as_handled()
 	elif "get" in actions and event.is_action_pressed("get"):
-		var n = level.event('get', t)
-		if n:
-			self.add_child(n)
-			n.set_owner(self)
-			n.event(Event.make(Event.TAKEN, self))
-			inventory.add(n)
-			turn()
+		say("is that a dagger\nbefore mine eyes ...")
+		# TODO: re-enable this.
+		#var n = level.event('get', t)
+		#if n:
+			#self.add_child(n)
+			#n.set_owner(self)
+			#n.event(Event.make(Event.TAKEN, self))
+			#inventory.add(n)
+			#turn()
+		for dir in DIRS:
+			for n in level.get_nodes_at_tile('obj', t + dir):
+				if not n:
+					continue
+				else:
+					n.event(Event.make(Event.GET, self))
+					turn()
 		get_viewport().set_input_as_handled()
 	elif "inventory" in actions and event.is_action_pressed("inventory"):
 		inventory.toggle()
