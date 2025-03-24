@@ -28,16 +28,16 @@ var actions = []
 # child references
 @onready var game_gui_layer = get_node("/root/game/CanvasLayer2")
 @onready var gui_layer = $CanvasLayer
-@onready var inventory = $CanvasLayer/Inventory
+@onready var inventory = get_node("/root/game/CanvasLayer2/Inventory")
 
 func _ready():
 	position = Vector2(1, 1) * TILESIZE
 	$Gfx/Torso/AnimationPlayer.play("heave")
 	#inventory.set_actor(self)
 	$FlickeringLightSource.enable()
-	remove_child(inventory)
-	game_gui_layer.add_child(inventory)
-	inventory.set_owner(game_gui_layer)
+	#remove_child(inventory)
+	#game_gui_layer.add_child(inventory)
+	#inventory.set_owner(game_gui_layer)
 	
 func set_level(new_level, spawn):
 	level = new_level

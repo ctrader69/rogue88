@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://lqhkw3i5pl22"]
+[gd_scene load_steps=10 format=3 uid="uid://lqhkw3i5pl22"]
 
 [ext_resource type="PackedScene" uid="uid://chjegtq065pnm" path="res://scenes/Hud/Hud.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://w7wbbdelgots" path="res://scenes/Player.tscn" id="2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c4xd2eomfk3an" path="res://assets/cursor-plus.png" id="4_m2xxa"]
 [ext_resource type="AudioStream" uid="uid://dnknv3vvmbf45" path="res://assets/music/15 - Journey - Separate Ways (Worlds Apart).mp3" id="5"]
 [ext_resource type="PackedScene" uid="uid://c4fwdm2xu3qh0" path="res://scenes/PlayerStatus/PlayerStatus.tscn" id="6_38hgr"]
+[ext_resource type="PackedScene" uid="uid://5lndbfyw8508" path="res://scenes/Inventory/Inventory.tscn" id="7_ahlwx"]
 
 [sub_resource type="Shader" id="1"]
 code = "/*
@@ -281,6 +282,8 @@ texture = ExtResource("4_m2xxa")
 [node name="Hud" parent="CanvasLayer2" instance=ExtResource("1")]
 visible = false
 scale = Vector2(0.5, 0.5)
+
+[node name="Inventory" parent="CanvasLayer2" instance=ExtResource("7_ahlwx")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.235433, 0.189867, 0.376068, 1)

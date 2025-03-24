@@ -110,6 +110,7 @@ func _unhandled_input(event):
 				var inventory_item = items[selection]['InventoryItem']
 				var item = items[selection]['Item']
 				actor.equip(item)
+				# TODO: exception on un-equippable
 				if inventory_item.equipped:
 					if actor.unequip(item):
 						inventory_item.toggle_equipped()
