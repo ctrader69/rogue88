@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://m46boh7wcj22" path="res://assets/weapons.png" id="3_p2nyd"]
 [ext_resource type="AudioStream" uid="uid://c0ig45x4hbtpa" path="res://assets/sounds/bump.wav" id="5"]
 [ext_resource type="Texture2D" uid="uid://cibecanelc4lr" path="res://assets/shadow-hero.png" id="5_12bm7"]
-[ext_resource type="PackedScene" uid="uid://5lndbfyw8508" path="res://assets/scenes/Inventory/Inventory.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://5lndbfyw8508" path="res://scenes/Inventory/Inventory.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://Wound.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://c0rhud8k0e8oj" path="res://scenes/FlickeringLightSource/flickering_light_source.tscn" id="9_7xhue"]
 
@@ -16,22 +16,10 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, -2, -2),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -0.5), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, -2, -2),
 "update": 0,
@@ -68,6 +56,9 @@ texture = ExtResource("3_p2nyd")
 centered = false
 hframes = 16
 
+[node name="Hand" type="Marker2D" parent="Gfx/Torso"]
+position = Vector2(6, 3)
+
 [node name="Legs" type="Sprite2D" parent="Gfx"]
 texture = ExtResource("3_eoroo")
 centered = false
@@ -83,6 +74,7 @@ centered = false
 stream = ExtResource("5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("6")]
 

@@ -2,6 +2,7 @@ extends "res://scenes/Lifeform.gd"
 
 const TILESIZE = 8
 const TILES_PER_ROOM = 16
+var camera_mode = "follow"
 const CAMERA_SHIFT = (TILES_PER_ROOM - 1) * TILESIZE
 const ROOMSIZE = TILES_PER_ROOM * TILESIZE
 const LEFT = Vector2i(-1, 0)
@@ -23,9 +24,10 @@ var actions = []
 @onready var sfx = get_node("/root/game/Sfx")
 @onready var Items = get_node("/root/Items")
 @onready var player_status = get_node("/root/game/CanvasLayer2/PlayerStatus")
-@onready var gui_layer = get_node("/root/game/CanvasLayer2")
 
 # child references
+@onready var game_gui_layer = get_node("/root/game/CanvasLayer2")
+@onready var gui_layer = $CanvasLayer
 @onready var inventory = $CanvasLayer/Inventory
 
 func _ready():
@@ -33,24 +35,38 @@ func _ready():
 	$Gfx/Torso/AnimationPlayer.play("heave")
 	#inventory.set_actor(self)
 	$FlickeringLightSource.enable()
+	remove_child(inventory)
+	game_gui_layer.add_child(inventory)
+	inventory.set_owner(game_gui_layer)
 	
-func set_level(level, spawn):
-	self.level = level
+func set_level(new_level, spawn):
+	level = new_level
 	base = level.get_base()
 	position = spawn * TILESIZE
-	camera.position = Vector2(0, 0)
-	if camera.position.x + CAMERA_SHIFT < position.x:
-		while camera.position.x < position.x:
-			camera.position.x += CAMERA_SHIFT
-	elif camera.position.x > position.x:
-		while camera.position.x > position.x:
-			camera.position.x -= CAMERA_SHIFT
-	if camera.position.y + CAMERA_SHIFT < position.y:
-		while camera.position.y < position.y:
-			camera.position.y += CAMERA_SHIFT
-	elif camera.position.y > position.y:
-		while camera.position.y > position.y:
-			camera.position.y -= CAMERA_SHIFT
+	
+	if camera_mode == "fixed":
+		camera.position = Vector2(0, 0)
+		if camera.position.x + CAMERA_SHIFT < position.x:
+			while camera.position.x < position.x:
+				camera.position.x += CAMERA_SHIFT
+		elif camera.position.x > position.x:
+			while camera.position.x > position.x:
+				camera.position.x -= CAMERA_SHIFT
+		if camera.position.y + CAMERA_SHIFT < position.y:
+			while camera.position.y < position.y:
+				camera.position.y += CAMERA_SHIFT
+		elif camera.position.y > position.y:
+			while camera.position.y > position.y:
+				camera.position.y -= CAMERA_SHIFT
+	elif camera_mode == "follow":
+		game.remove_child(camera)
+		self.add_child(camera)
+		camera.set_owner(self)
+		camera.anchor_mode = Camera2D.ANCHOR_MODE_DRAG_CENTER
+		camera.position_smoothing_enabled = true
+		#camera.limit_top = 0
+		#camera.limit_left = 0
+		
 	level.enter_room(roomid_calc())
 	
 	# TODO: LEVELTYPE enum
@@ -85,9 +101,12 @@ func tile_to_world(t: Vector2):
 	return base.map_to_local(t)
 	
 func roomid_calc():
-	return Vector2(
-		camera.position.x / (TILES_PER_ROOM - 1) / TILESIZE,
-		camera.position.y / (TILES_PER_ROOM - 1) / TILESIZE)
+	if camera_mode == "fixed":
+		return Vector2(
+			camera.position.x / (TILES_PER_ROOM - 1) / TILESIZE,
+			camera.position.y / (TILES_PER_ROOM - 1) / TILESIZE)
+	else:
+		return Vector2(0,0)
 		
 func face(v):
 	if v == RIGHT:
@@ -138,22 +157,23 @@ func move(v):
 	# TODO: enter/exit room - camera pan is a side-effect of this, hook up exit_room call.
 	# pan camera
 	# TOOD: implement exit/enter as events
-	if v == RIGHT:
-		if camera.position.x + CAMERA_SHIFT <= position.x:
-			camera.position.x += CAMERA_SHIFT
-			level.enter_room(roomid_calc())
-	elif v == LEFT:
-		if camera.position.x >= position.x:
-			camera.position.x -= CAMERA_SHIFT
-			level.enter_room(roomid_calc())
-	elif v == UP:
-		if camera.position.y >= position.y:
-			camera.position.y -= CAMERA_SHIFT
-			level.enter_room(roomid_calc())
-	elif v == DOWN:
-		if camera.position.y + CAMERA_SHIFT <= position.y:
-			camera.position.y += CAMERA_SHIFT
-			level.enter_room(roomid_calc())
+	if camera_mode == "fixed":
+		if v == RIGHT:
+			if camera.position.x + CAMERA_SHIFT <= position.x:
+				camera.position.x += CAMERA_SHIFT
+				level.enter_room(roomid_calc())
+		elif v == LEFT:
+			if camera.position.x >= position.x:
+				camera.position.x -= CAMERA_SHIFT
+				level.enter_room(roomid_calc())
+		elif v == UP:
+			if camera.position.y >= position.y:
+				camera.position.y -= CAMERA_SHIFT
+				level.enter_room(roomid_calc())
+		elif v == DOWN:
+			if camera.position.y + CAMERA_SHIFT <= position.y:
+				camera.position.y += CAMERA_SHIFT
+				level.enter_room(roomid_calc())
 			
 	if facing != v:
 		set_facing(v)

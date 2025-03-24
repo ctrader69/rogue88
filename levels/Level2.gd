@@ -5,7 +5,7 @@ func init(description):
 		Vector2i(4, 5) : {
 			'contents' : [
 				{
-					'gametype' : 'bow',
+					'gametype' : 'potion',
 					'initdata' : {}
 				},
 			]

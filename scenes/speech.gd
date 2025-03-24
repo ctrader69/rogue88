@@ -14,8 +14,8 @@ func init(d):
 	if 'text' in d:
 		text = d['text']
 		
-func state_set(state):
-	match state:
+func state_set(new_state):
+	match new_state:
 		'writing' :
 			$Label.text = ""
 			var tw = get_tree().create_tween()
@@ -29,6 +29,7 @@ func state_set(state):
 			tw.tween_callback(self.state_set.bind("die"))
 		'die' :
 			queue_free()
+	state = new_state
 	
 func _ready():
 	state_set('writing')

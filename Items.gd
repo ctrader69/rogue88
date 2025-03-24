@@ -3,6 +3,16 @@ extends Node
 # GODOT_4 - can't use load on these png images, switched to load, had to remove const from  ITEMS
 
 var ITEMS = {
+	# alphabetical
+	'potion' : {
+		'count'             : 1,
+		'description' 		: 'bubble bubble toil and trouble',
+		'equipable'         : false,
+		'inventory-texture' : preload("res://assets/scenes/Potion/potion-8x8.png"),
+		'name'              : 'Potion',
+		'stackable' 		: true,
+		'scene'             : null,
+	},
 	'arrows'  : {
 		'count'             : 5,
 		'description' 		: 'a stack of basic arrows',

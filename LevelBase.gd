@@ -4,8 +4,6 @@ extends Node2D
 @onready var Items = get_node("/root/Items")
 @onready var EventBus = get_node("/root/EventBus")
 
-
-
 var description = {}
 
 var astar = null

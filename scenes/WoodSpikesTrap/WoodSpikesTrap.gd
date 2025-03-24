@@ -42,5 +42,5 @@ func on_tile_entered(t, n):
 			set_frame()
 			n.add_child(preload("res://scenes/HeadLabel/HeadLabel.tscn").instantiate().init(str(-1), Vector2(0, -4), Color('#ff004d'), Color('#7e2553')))
 			
-func event(e):
+func event(_e):
 	pass

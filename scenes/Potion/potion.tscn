@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://desnf83xfh6pv"]
+
+[ext_resource type="Script" path="res://scenes/Potion/potion.gd" id="1_n68f4"]
+
+[node name="Potion" type="Node2D"]
+script = ExtResource("1_n68f4")

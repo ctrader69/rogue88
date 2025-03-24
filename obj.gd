@@ -249,6 +249,12 @@ var DATA = {
 		'solid'    : false,
 		'pushable' : false,
 	},
+	'potion' : {
+		'scene'    : preload("res://scenes/Potion/potion.tscn"),
+		'init'     : {},
+		'solid'    : false,
+		'pushable' : false,
+	},
 	'mint-leaf' : {
 		'scene'    : preload("res://scenes/Item/Item.tscn"),
 		'init'     : {'item' : 'mint-leaf'},
