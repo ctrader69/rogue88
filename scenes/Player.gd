@@ -277,6 +277,11 @@ func _unhandled_input(event):
 		get_viewport().set_input_as_handled()
 	elif "get" in actions and event.is_action_pressed("get"):
 		say("is that a dagger\nbefore mine eyes ...")
+		var tw = get_tree().create_tween()
+		tw.tween_property(camera, "zoom", Vector2(2.0, 2.0), 1.0)
+		tw.tween_property(camera, "zoom", Vector2(1.0, 1.0), 1.0)
+		#camera.zoom = Vector2(2.0, 2.0)
+		
 		# TODO: re-enable this.
 		#var n = level.event('get', t)
 		#if n:
