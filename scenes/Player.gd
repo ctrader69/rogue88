@@ -130,6 +130,28 @@ func set_facing(v):
 	facing = v
 	if weapon:
 		weapon.set_facing(v)
+		
+func camera_focus(target_position, target_zoom, time):
+	var restore_position = camera.position
+	camera.position_smoothing_enabled = false
+	var tw = get_tree().create_tween()
+	tw.tween_property(camera, "position", target_position, time)
+	tw.parallel()
+	tw.tween_property(camera, "zoom", target_zoom, time)
+	tw.tween_callback(camera_focus_done.bind(restore_position, time))
+	
+func camera_focus_done(restore_position, time):
+	camera_restore(restore_position, time)
+
+func camera_restore(target_position, time):
+	var tw = get_tree().create_tween()
+	tw.tween_property(camera, "position", target_position, time)
+	tw.parallel()
+	tw.tween_property(camera, "zoom", Vector2(1.0, 1.0), time)
+	tw.tween_callback(camera_restore_done.bind())
+	
+func camera_restore_done():
+	camera.position_smoothing_enabled = true
 	
 func move(v):
 	# TODO: this should be higher - it's the keyboard click
@@ -277,9 +299,15 @@ func _unhandled_input(event):
 		get_viewport().set_input_as_handled()
 	elif "get" in actions and event.is_action_pressed("get"):
 		say("is that a dagger\nbefore mine eyes ...")
-		var tw = get_tree().create_tween()
-		tw.tween_property(camera, "zoom", Vector2(2.0, 2.0), 1.0)
-		tw.tween_property(camera, "zoom", Vector2(1.0, 1.0), 1.0)
+		var initial_position = camera.position
+		camera_focus(initial_position + Vector2(16, 16), Vector2(2.0, 2.0), 1.0)
+		#camera.position_smoothing_enabled = false
+		#var tw = get_tree().create_tween()
+		#tw.tween_property(camera, "position", Vector2(8 * 5, 8 * 5), 1.0)
+		#tw.parallel()
+		#tw.tween_property(camera, "zoom", Vector2(2.0, 2.0), 1.0)
+		#tw.tween_property(camera, "zoom", Vector2(1.0, 1.0), 1.0)
+		#tw.tween_callback(camera.)
 		#camera.zoom = Vector2(2.0, 2.0)
 		
 		# TODO: re-enable this.
