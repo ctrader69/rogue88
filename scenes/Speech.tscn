@@ -3,13 +3,24 @@
 [ext_resource type="Script" path="res://scenes/speech.gd" id="1_vvatt"]
 [ext_resource type="Theme" uid="uid://cbetji2bt550i" path="res://tiny-theme.tres" id="2_nv5yx"]
 
-[node name="Speech" type="Node2D"]
+[node name="Speech" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_vvatt")
 
 [node name="Label" type="Label" parent="."]
-offset_right = 24.0
-offset_bottom = 5.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -5.0
+offset_right = 12.0
+grow_horizontal = 2
+grow_vertical = 0
 theme = ExtResource("2_nv5yx")
 theme_override_colors/font_color = Color(0.47451, 1, 0.580392, 1)
 text = "Sloane"
