@@ -16,7 +16,17 @@ var state = 'writing'
 func init(d):
 	if 'text' in d:
 		text = d['text']
-		
+	if 'color' in d:
+		var color = d['color']
+		$Label.set("theme_override_colors/font_color", color)
+		# TODO: color.darken()
+		#var factor = 0.25
+		#var r = color.r * (1 - factor)
+		#var g = color.g * (1 - factor)
+		#var b = color.b * (1 - factor)
+		#var shadow_color = Color(r, g, b, color.a)
+		#$Label.set("theme_override_colors/font_shadow_color", shadow_color)
+
 func state_set(new_state):
 	match new_state:
 		'writing' :
@@ -25,6 +35,7 @@ func state_set(new_state):
 			var tw = get_tree().create_tween()
 			tw.tween_method(update_text, 0, text.length(), WRITE_DURATION_PER_CHAR * text.length())
 			tw.tween_callback(self.state_set.bind("fading"))
+		# TODO: need a new state - holding, hold text for some small amount of time.
 		'fading' :
 			var tw = get_tree().create_tween()
 			tw.tween_property(self, "position", position + Vector2(0, -8), FADE_DURATION)

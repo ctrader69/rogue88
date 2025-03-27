@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://wxewxijoafxy"]
+
+[ext_resource type="Script" path="res://scenes/Npc/npc.gd" id="1_2a548"]
+[ext_resource type="Texture2D" uid="uid://b7atnqk7dl1gl" path="res://assets/scenes/NPC/npc-male-1.png" id="2_5kmfh"]
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_2a548")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5kmfh")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="MouthPosition" type="Marker2D" parent="."]
+position = Vector2(3.5, 1.5)

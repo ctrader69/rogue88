@@ -283,6 +283,12 @@ var DATA = {
 		'solid'    : false,
 		'pushable' : false,
 	},
+	'npc' : {
+		'scene'    : preload("res://scenes/Npc/npc.tscn"),
+		'init'     : {},
+		'solid'    : false,
+		'pushable' : false,
+	},
 	'rat' : {
 		'blood' : 'purple',
 		'scene' : preload("res://scenes/MOBs/Rat/Rat.tscn"),
