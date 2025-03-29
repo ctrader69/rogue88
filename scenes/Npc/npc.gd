@@ -12,6 +12,8 @@ func _ready():
 	t.one_shot = false
 	t.connect("timeout", Callable(self, "on_timer_expire"))
 	t.start()
+	$Gfx/AnimationPlayer.play("idle")
+	mouth_marker = $Gfx/UpperTorso/Head/MouthMarker
 	
 func on_timer_expire():
 	say(Gibberish.sentence_fragment())

@@ -61,7 +61,6 @@ libraries = {
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(3.5, 1)
 color = Color(1, 0.501961, 0, 1)
-energy = 0.5
 shadow_filter_smooth = 8.0
 texture = ExtResource("2_plui1")
 texture_scale = 0.25
