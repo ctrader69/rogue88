@@ -13,6 +13,8 @@ var hit_animation_playing_var = false
 var hit_sfx_playing = false
 var effects = []
 var nBloodSplatter = null
+var mouth_marker = null
+var speech_color = Color("#ffffff")
 
 func slide_to_adjacent_tile(dir: Vector2, n: Control):
 	# important: called after position has been updated so need to tween from previous position to
@@ -131,4 +133,14 @@ func set_gametype(gametype):
 	self.gametype = gametype
 	if nBloodSplatter:
 		nBloodSplatter.init(mobs.MOBS[gametype]['blood'])
-	
+		
+func say(text):
+	var n = preload("res://scenes/Speech.tscn").instantiate()
+	if mouth_marker:
+		n.position = position + Vector2(mouth_marker.position.x, -2)
+	else:
+		n.position = position
+	n.init({'text' : text, 'color' : speech_color})
+	var text_layer = get_node("/root/game/TextLayer")
+	text_layer.add_child(n)
+	n.set_owner(text_layer)

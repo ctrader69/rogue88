@@ -3,14 +3,59 @@ extends "res://scenes/Lifeform.gd"
 # TODO: face direction of travel
 # TODO: face player
 
+var utterances = [
+	"brains",
+	"aaagh",
+	"grrr",
+	"urghh",
+	"gaaaah",
+	"arrgh",
+	"bleurgh",
+	"gwaaaah",
+	"hrrrgh",
+	"bwaaah",
+	"graaah",
+	"mrrgh",
+	"hraaaagh",
+	"brrraaains",
+	"graaack",
+	"waaaahh",
+	"scraaagh",
+	"urgghhh",
+	"frraaagh",
+	"bluurgh",
+	"haaaaah",
+	"grrack"
+]
+var utterance_rate_min = 5.0
+var utterance_rate_max = 15.0
+var next_utterance = 0
+
+func utterance_schedule():
+	next_utterance = randf_range(utterance_rate_min, utterance_rate_max)
+	
+func utterance_tick(delta):
+	if next_utterance == 0:
+		return
+	next_utterance -= delta
+	if next_utterance <= 0:
+		say(utterances[randi() % utterances.size()])
+		utterance_schedule()
+	
 func init(d: Dictionary):
 	position = d['position']
+	speech_color = "#a8e2ca"
 
 func _ready():
 	super._ready()
 	gametype = 'zombie'
+	mouth_marker = $Gfx/Torso/MouthMarker
 	$Gfx/TorsoAnimation.play("heave")
 	$Gfx/TorsoAnimation.seek(randf_range(0.0, 1.0))
+	utterance_schedule()
+	
+func _process(delta):
+	utterance_tick(delta)
 
 func on_turn():
 	if alive:
@@ -26,7 +71,7 @@ func load(d : Dictionary):
 
 func _on_HitBox_area_entered(area):
 	hitbox_area_entered(area)
-	
+
 func hit_animation():
 	$Gfx/HitFlash.play("hitflash")
 	var t = Timer.new()

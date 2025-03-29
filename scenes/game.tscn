@@ -287,3 +287,6 @@ scale = Vector2(0.5, 0.5)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.235433, 0.189867, 0.376068, 1)
+
+[node name="TextLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
