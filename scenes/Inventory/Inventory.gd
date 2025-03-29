@@ -37,7 +37,7 @@ const HIDDEN_COORD = Vector2(2.5, 128)
 var items = {}
 var state = 'deactivated'
 var selection = Vector2(0, 0)
-@onready var actor = get_node('../..')
+@onready var actor = get_node('/root/game/Player')
 
 func index_to_coord(index : int):
 	return Vector2(floor(index % COLUMNS), floor(index / COLUMNS))

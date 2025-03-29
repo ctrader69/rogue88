@@ -13,7 +13,8 @@ func _ready():
 	$Gfx/TorsoAnimation.seek(randf_range(0.0, 1.0))
 
 func on_turn():
-	$AI.on_turn()
+	if alive:
+		$AI.on_turn()
 
 func save(d : Dictionary):
 	super.save(d)

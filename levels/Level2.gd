@@ -8,6 +8,10 @@ func init(description):
 					'gametype' : 'potion',
 					'initdata' : {}
 				},
+				{
+					'gametype' : 'bow',
+					'initdata' : {}
+				},
 			]
 		}
 	}

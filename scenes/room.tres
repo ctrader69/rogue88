@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=30 format=3 uid="uid://bd7i8r3gn3ow7"]
+[gd_resource type="TileSet" load_steps=32 format=3 uid="uid://bd7i8r3gn3ow7"]
 
 [ext_resource type="Texture2D" uid="uid://hprwu0xofivd" path="res://assets/objs.png" id="1_xs0g7"]
 [ext_resource type="Texture2D" uid="uid://dj0scppklrh58" path="res://assets/floortiles.png" id="2_ryttn"]
 [ext_resource type="Texture2D" uid="uid://d1l5qn18wcwfm" path="res://assets/dungeon.png" id="3_4bi75"]
+[ext_resource type="Texture2D" uid="uid://cy5i7wv146nl3" path="res://assets/enemies.png" id="3_lrrm4"]
 [ext_resource type="Texture2D" uid="uid://rnh0mri0ojah" path="res://assets/fireplace.png" id="4_fr1pn"]
 [ext_resource type="Texture2D" uid="uid://w5ghgacki038" path="res://assets/doors.png" id="5_51408"]
 [ext_resource type="Texture2D" uid="uid://df1nxi4jilt66" path="res://assets/bat.png" id="6_g8mi5"]
@@ -63,6 +64,15 @@ texture_region_size = Vector2i(8, 8)
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8g4u5"]
+texture = ExtResource("3_lrrm4")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+0:0/0/custom_data_0 = "zombie"
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ubbjl"]
 texture = ExtResource("3_4bi75")
@@ -172,5 +182,6 @@ sources/7 = SubResource("TileSetAtlasSource_gpcsa")
 sources/4 = SubResource("TileSetAtlasSource_07axu")
 sources/8 = SubResource("TileSetAtlasSource_rqvt1")
 sources/9 = SubResource("TileSetAtlasSource_5cj6r")
+sources/10 = SubResource("TileSetAtlasSource_8g4u5")
 pattern_0 = SubResource("TileMapPattern_lglm2")
 pattern_1 = SubResource("TileMapPattern_r70yd")

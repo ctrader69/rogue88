@@ -61,11 +61,12 @@ func hit():
 	var damage = -1
 	add_child(preload("res://scenes/HeadLabel/HeadLabel.tscn").instantiate().init(str(damage), Vector2(0, -4), Color('#ff004d'), Color('#7e2553')))
 	hp += damage
-	if hp <= 0:
+	if hp 	<= 0:
 		alive = false
-		var level = get_parent()
-		var tile = level.world_to_tile(position)
-		level.remove_node_from_tile('obj', tile, self)
+		# TODO: remove this, lifeform remains as a corpse.
+		# var level = get_parent()
+		# var tile = level.world_to_tile(position)
+		# level.remove_node_from_tile('obj', tile, self)
 	hit_animation_playing_var = true
 	hit_sfx_playing = true
 	hit_animation()
