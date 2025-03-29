@@ -8,7 +8,7 @@ var ITEMS = {
 		'count'             : 1,
 		'description' 		: 'bubble bubble toil and trouble',
 		'equipable'         : false,
-		'inventory-texture' : preload("res://assets/scenes/Potion/potion-8x8.png"),
+		'inventory-texture' : preload("res://assets/images/scenes/Potion/potion-8x8.png"),
 		'name'              : 'Potion',
 		'stackable' 		: true,
 		'scene'             : null,

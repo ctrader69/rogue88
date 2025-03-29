@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=32 format=3 uid="uid://bd7i8r3gn3ow7"]
+[gd_resource type="TileSet" load_steps=31 format=3 uid="uid://bd7i8r3gn3ow7"]
 
 [ext_resource type="Texture2D" uid="uid://hprwu0xofivd" path="res://assets/objs.png" id="1_xs0g7"]
 [ext_resource type="Texture2D" uid="uid://dj0scppklrh58" path="res://assets/floortiles.png" id="2_ryttn"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://b263qcsqhmr1r" path="res://assets/images/scenes/MOBs/PoisonousFrog/frog.png" id="9_004pk"]
 [ext_resource type="Texture2D" uid="uid://crsxskxax63c" path="res://assets/images/scenes/Bookshelf/bookshelf.png" id="10_630cs"]
 [ext_resource type="Texture2D" uid="uid://c6m4d2s3h4djo" path="res://assets/images/tilesets/furniture.png" id="11_lfvor"]
-[ext_resource type="Texture2D" uid="uid://1ijwqgd3jhhk" path="res://assets/scenes/NPC/npcs.png" id="12_8i8q5"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_lglm2"]
 tile_data = PackedInt32Array(0, 262145, 0, 65536, 262145, 0, 131072, 262145, 0, 196608, 262145, 0, 1, 262145, 0, 65537, 262145, 0, 131073, 262145, 0, 196609, 262145, 0, 2, 12, 0, 65538, 12, 0, 131074, 12, 0, 196610, 262145, 0, 3, 262145, 0, 65539, 262145, 0, 131075, 12, 0, 196611, 262145, 0)
@@ -155,7 +154,6 @@ texture_region_size = Vector2i(8, 8)
 0:0/0/custom_data_1 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5cj6r"]
-texture = ExtResource("12_8i8q5")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 0:0/0/custom_data_0 = "npc"
