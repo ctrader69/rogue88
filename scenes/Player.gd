@@ -24,20 +24,13 @@ var actions = []
 @onready var sfx = get_node("/root/game/Sfx")
 @onready var Items = get_node("/root/Items")
 @onready var player_status = get_node("/root/game/CanvasLayer2/PlayerStatus")
-
-# child references
-@onready var game_gui_layer = get_node("/root/game/CanvasLayer2")
-@onready var gui_layer = $CanvasLayer
 @onready var inventory = get_node("/root/game/CanvasLayer2/Inventory")
 
 func _ready():
 	position = Vector2(1, 1) * TILESIZE
+	mouth_marker = $Gfx/MouthMarker
 	$Gfx/Torso/AnimationPlayer.play("heave")
-	#inventory.set_actor(self)
 	$FlickeringLightSource.enable()
-	#remove_child(inventory)
-	#game_gui_layer.add_child(inventory)
-	#inventory.set_owner(game_gui_layer)
 	
 func set_level(new_level, spawn):
 	level = new_level
@@ -112,11 +105,9 @@ func face(v):
 	if v == RIGHT:
 		$Gfx/Torso.flip_h = false
 		$Gfx/Legs.flip_h = false
-		$Gfx/Shadow.position = Vector2(-0.5, 0.5)
 	elif v == LEFT:
 		$Gfx/Torso.flip_h = true
 		$Gfx/Legs.flip_h = true
-		$Gfx/Shadow.position = Vector2(0.5, 0.5)
 		
 func dump_room():
 	var r = roomid_calc()
@@ -233,14 +224,7 @@ func move_into_node(t, n, dir):
 
 func _process(delta):
 	pass
-	
-func say(text):
-	var n = preload("res://scenes/Speech.tscn").instantiate()
-	n.position = position
-	n.init({'text' : text})
-	gui_layer.add_child(n)
-	n.set_owner(gui_layer)
-	
+		
 func turn():
 	EventBus.emit_signal("player_turn")
 	

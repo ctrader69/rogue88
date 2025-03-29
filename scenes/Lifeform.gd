@@ -14,7 +14,9 @@ var hit_sfx_playing = false
 var effects = []
 var nBloodSplatter = null
 var mouth_marker = null
+# alphabetical
 var speech_color = Color("#ffffff")
+@onready var text_layer = get_node("/root/game/TextLayer")
 
 func slide_to_adjacent_tile(dir: Vector2, n: Control):
 	# important: called after position has been updated so need to tween from previous position to
@@ -141,6 +143,5 @@ func say(text):
 	else:
 		n.position = position
 	n.init({'text' : text, 'color' : speech_color})
-	var text_layer = get_node("/root/game/TextLayer")
 	text_layer.add_child(n)
 	n.set_owner(text_layer)
